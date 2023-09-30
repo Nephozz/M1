@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:simplepdl="http://simplepdl"
+    xsi:schemaLocation="http://simplepdl SimplePDL.ecore"
+    name="1">
+  <activities
+      linksToSuccessors="//@workSequences.0 //@workSequences.2 //@workSequences.4"
+      name="Concevoir"/>
+  <activities
+      linksToPredecessors="//@workSequences.0"
+      linksToSuccessors="//@workSequences.1 //@workSequences.3 //@workSequences.5"
+      name="Programmer"/>
+  <activities
+      linksToPredecessors="//@workSequences.1 //@workSequences.5"
+      name="Documenter"/>
+  <activities
+      linksToPredecessors="//@workSequences.2 //@workSequences.3 //@workSequences.4"
+      name="Tester"/>
+  <workSequences
+      linkType="finishToStart"
+      predecessor="//@activities.0"
+      successor="//@activities.1"/>
+  <workSequences
+      predecessor="//@activities.1"
+      successor="//@activities.2"/>
+  <workSequences
+      predecessor="//@activities.0"
+      successor="//@activities.3"/>
+  <workSequences
+      linkType="finishToFinish"
+      predecessor="//@activities.1"
+      successor="//@activities.3"/>
+  <workSequences
+      linkType="finishToFinish"
+      predecessor="//@activities.0"
+      successor="//@activities.3"/>
+  <workSequences
+      linkType="finishToFinish"
+      predecessor="//@activities.1"
+      successor="//@activities.2"/>
+</simplepdl:Process>

@@ -1,0 +1,141 @@
+# dune runtest
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Workspace root: /mnt/c/Users/thoma/OneDrive/Documents/SN/2A/PF/TP3
+# Auto-detected concurrency: 20
+$ /home/nephozz/.opam/4.11.0/bin/ocamlc.opt -config > /tmp/dune_7d413a_output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; ocaml_bin = External "/home/nephozz/.opam/4.11.0/bin"
+#  ; ocaml = Ok External "/home/nephozz/.opam/4.11.0/bin/ocaml"
+#  ; ocamlc = External "/home/nephozz/.opam/4.11.0/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/home/nephozz/.opam/4.11.0/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/home/nephozz/.opam/4.11.0/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/home/nephozz/.opam/4.11.0/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" : "/home/nephozz/.opam/4.11.0/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/home/nephozz/.opam/4.11.0/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" :
+#            "/mnt/c/Users/thoma/OneDrive/Documents/SN/2A/PF/TP3"
+#        ; "INSIDE_DUNE" :
+#            "/mnt/c/Users/thoma/OneDrive/Documents/SN/2A/PF/TP3/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/mnt/c/Users/thoma/OneDrive/Documents/SN/2A/PF/TP3/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/mnt/c/Users/thoma/OneDrive/Documents/SN/2A/PF/TP3/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/mnt/c/Users/thoma/OneDrive/Documents/SN/2A/PF/TP3/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_paths = [ External "/home/nephozz/.opam/4.11.0/lib" ]
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.11.0"
+#      ; standard_library_default = "/home/nephozz/.opam/4.11.0/lib/ocaml"
+#      ; standard_library = "/home/nephozz/.opam/4.11.0/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; bytecomp_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; native_c_libraries = [ "-lm" ]
+#      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
+#      ; cc_profile = []
+#      ; architecture = "amd64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "linux"
+#      ; asm = [ "as" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X028"
+#      ; cmi_magic_number = "Caml1999I028"
+#      ; cmo_magic_number = "Caml1999O028"
+#      ; cma_magic_number = "Caml1999A028"
+#      ; cmx_magic_number = "Caml1999Y028"
+#      ; cmxa_magic_number = "Caml1999Z028"
+#      ; ast_impl_magic_number = "Caml1999M028"
+#      ; ast_intf_magic_number = "Caml1999N028"
+#      ; cmxs_magic_number = "Caml1999D028"
+#      ; cmt_magic_number = "Caml1999T028"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/.sandbox/2c775285c4be495a9e19a8a024f4a709/default && .ppx/bfcab61e6a21ecf6d2f80029fc1ef484/ppx.exe --cookie 'inline_tests="enabled"' --cookie 'library-name="tp3"' -o tp3.pp.ml --impl tp3.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /home/nephozz/.opam/4.11.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I .tp3.objs/byte -I /home/nephozz/.opam/4.11.0/lib/base -I /home/nephozz/.opam/4.11.0/lib/base/base_internalhash_types -I /home/nephozz/.opam/4.11.0/lib/base/caml -I /home/nephozz/.opam/4.11.0/lib/base/shadow_stdlib -I /home/nephozz/.opam/4.11.0/lib/jane-street-headers -I /home/nephozz/.opam/4.11.0/lib/ppx_compare/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/ppx_enumerate/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/ppx_hash/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/ppx_inline_test/config -I /home/nephozz/.opam/4.11.0/lib/ppx_inline_test/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/ppx_sexp_conv/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/sexplib0 -I /home/nephozz/.opam/4.11.0/lib/time_now -no-alias-deps -opaque -o .tp3.objs/byte/tp3.cmo -c -impl tp3.pp.ml)
+> File "tp3.ml", line 85, characters 8-20:
+> 85 | let rec permutations l = match l with
+>              ^^^^^^^^^^^^
+> Warning 39: unused rec flag.
+> File "tp3.ml", line 87, characters 2-3:
+> 87 | | h::t -> List.fold_right
+>        ^
+> Warning 27: unused variable h.
+> File "tp3.ml", line 87, characters 5-6:
+> 87 | | h::t -> List.fold_right
+>           ^
+> Warning 27: unused variable t.
+$ (cd _build/default && /home/nephozz/.opam/4.11.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I .tp3.objs/byte -I .tp3.objs/native -I /home/nephozz/.opam/4.11.0/lib/base -I /home/nephozz/.opam/4.11.0/lib/base/base_internalhash_types -I /home/nephozz/.opam/4.11.0/lib/base/caml -I /home/nephozz/.opam/4.11.0/lib/base/shadow_stdlib -I /home/nephozz/.opam/4.11.0/lib/jane-street-headers -I /home/nephozz/.opam/4.11.0/lib/ppx_compare/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/ppx_enumerate/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/ppx_hash/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/ppx_inline_test/config -I /home/nephozz/.opam/4.11.0/lib/ppx_inline_test/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/ppx_sexp_conv/runtime-lib -I /home/nephozz/.opam/4.11.0/lib/sexplib0 -I /home/nephozz/.opam/4.11.0/lib/time_now -intf-suffix .ml -no-alias-deps -opaque -o .tp3.objs/native/tp3.cmx -c -impl tp3.pp.ml)
+> File "tp3.ml", line 85, characters 8-20:
+> 85 | let rec permutations l = match l with
+>              ^^^^^^^^^^^^
+> Warning 39: unused rec flag.
+> File "tp3.ml", line 87, characters 2-3:
+> 87 | | h::t -> List.fold_right
+>        ^
+> Warning 27: unused variable h.
+> File "tp3.ml", line 87, characters 5-6:
+> 87 | | h::t -> List.fold_right
+>           ^
+> Warning 27: unused variable t.
+$ (cd _build/default && /home/nephozz/.opam/4.11.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o tp3.cmxa .tp3.objs/native/tp3.cmx)
+$ (cd _build/default && /home/nephozz/.opam/4.11.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -24 -g -g -o .tp3.inline-tests/inline_test_runner_tp3.exe /home/nephozz/.opam/4.11.0/lib/ppx_inline_test/config/inline_test_config.cmxa /home/nephozz/.opam/4.11.0/lib/base/base_internalhash_types/base_internalhash_types.cmxa -I /home/nephozz/.opam/4.11.0/lib/base/base_internalhash_types /home/nephozz/.opam/4.11.0/lib/base/caml/caml.cmxa /home/nephozz/.opam/4.11.0/lib/sexplib0/sexplib0.cmxa /home/nephozz/.opam/4.11.0/lib/base/shadow_stdlib/shadow_stdlib.cmxa /home/nephozz/.opam/4.11.0/lib/base/base.cmxa -I /home/nephozz/.opam/4.11.0/lib/base /home/nephozz/.opam/4.11.0/lib/jane-street-headers/jane_street_headers.cmxa /home/nephozz/.opam/4.11.0/lib/ppx_sexp_conv/runtime-lib/ppx_sexp_conv_lib.cmxa /home/nephozz/.opam/4.11.0/lib/ppx_compare/runtime-lib/ppx_compare_lib.cmxa /home/nephozz/.opam/4.11.0/lib/ppx_enumerate/runtime-lib/ppx_enumerate_lib.cmxa /home/nephozz/.opam/4.11.0/lib/ppx_hash/runtime-lib/ppx_hash_lib.cmxa /home/nephozz/.opam/4.11.0/lib/time_now/time_now.cmxa -I /home/nephozz/.opam/4.11.0/lib/time_now /home/nephozz/.opam/4.11.0/lib/ppx_inline_test/runtime-lib/ppx_inline_test_lib.cmxa tp3.cmxa /home/nephozz/.opam/4.11.0/lib/ppx_inline_test/runner/lib/ppx_inline_test_runner_lib.cmxa -I /home/nephozz/.opam/4.11.0/lib/ppx_inline_test/runner/lib .tp3.inline-tests/.tp3.inline-tests.eobjs/native/dune__exe__Inline_test_runner_tp3.cmx -linkall)
+$ (cd _build/.sandbox/1661b901c9391f2c29ae0148b0cde864/default && .tp3.inline-tests/inline_test_runner_tp3.exe inline-test-runner tp3 -source-tree-root . -diff-cmd -)

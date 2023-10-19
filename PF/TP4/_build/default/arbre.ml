@@ -10,6 +10,7 @@ let bl = ('l',Noeud(false,[('a',Noeud(true,[('i',Noeud(true,[('d',Noeud(true,[])
                            ('e',Noeud(true,[('s',Noeud(true,[]))]));
                            ('o',Noeud(false,[('n',Noeud(false,[('g',Noeud(true,[]))]))]))]))
 let b1 = [bb;bd;bl]
+
 let arbre_sujet = Noeud(false,b1)
 
 (******************************************************************************)
@@ -94,3 +95,24 @@ let arbre_sujet3 =
 
 let%test _ = arbre_sujet2 = arbre_sujet
 let%test _ = arbre_sujet3 = arbre_sujet
+
+let rec retrait_arbre lc (Noeud(value, edges)) = match lc with
+| [] -> Noeud(false,edges)
+| h::t -> match (recherche h edges) with
+   | None -> Noeud(value, edges)
+   | Some a -> Noeud(value, maj h (retrait_arbre t a) edges)
+
+let rec parcours_arbre (Noeud(value,edges)) = 
+   if value then 
+      []::List.flatten(List.map(fun x -> let (c, arb) = x in
+      List.map(fun x -> c::x) (parcours_arbre arb)) edges)
+   else
+      List.flatten(List.map(fun x ->let (c, arb) = x in
+      List.map(fun x -> c::x) (parcours_arbre arb)) edges)
+
+let rec normalise (Noeud(value,edges)) = 
+   let branches_norm = List.map (fun b -> let (c,a) = b in (c, normalise a)) edges in
+   let new_branches = List.fold_right (fun h t -> let (_c,a) = h in
+   if a = Noeud(false,[]) then t
+   else h::t) branches_norm [] in
+   Noeud(value,new_branches)

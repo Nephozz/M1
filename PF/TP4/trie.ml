@@ -28,8 +28,8 @@ let nouveau fd fr = Trie(Noeud(false,[]), fd, fr)
 (*   résultat   : le résultat booléen du test                                 *)
 (******************************************************************************)
 let appartient mot trie = 
-  let Trie(Noeud(value,edges), fd, fr) = trie in  
-  Arbre.appartient_arbre (fd mot) Noeud(value,edges)
+  let Trie(arbre, fd, _fr) = trie in  
+  appartient_arbre (fd mot) arbre
 
 (******************************************************************************)
 (*   fonction d'ajout d'un élément dans un trie                               *)
@@ -55,8 +55,8 @@ let trie_sujet =
 (*   résultat   : le trie avec le mot retiré                                  *)
 (******************************************************************************)
 let retrait mot trie = 
-  let Trie(Noeud(value,edges), fd, fr) = trie in  
-  Arbre.retrait_arbre (fd mot) Noeud(value,edges)
+  let Trie(arbre, fd, fr) = trie in  
+  Trie(normalise (retrait_arbre (fd mot) arbre), fd, fr)
 
 (******************************************************************************)
 (*   fonction interne au Module qui génère la liste de tous les mots          *)
@@ -65,7 +65,9 @@ let retrait mot trie =
 (*   paramètre(s) : le trie                                                   *)
 (*   résultat     : la liste des mots                                         *)
 (******************************************************************************)
-let trie_dico trie = failwith "trie_dico"
+let trie_dico trie = 
+  let Trie(arbre, _fd, fr) = trie in
+  List.map fr (parcours_arbre arbre)
 
 (******************************************************************************)
 (* procédure d'affichage d'un trie                                            *)
@@ -74,4 +76,5 @@ let trie_dico trie = failwith "trie_dico"
 (*                - un trie                                                   *)
 (*   résultat   : aucun                                                       *)
 (******************************************************************************)
-let affiche p trie = failwith "TO DO affiche"
+let affiche p trie = 
+  List.iter p (trie_dico trie)

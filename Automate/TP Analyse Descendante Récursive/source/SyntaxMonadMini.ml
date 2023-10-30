@@ -6,39 +6,41 @@ type parseResult =
 ;;
 
 (*
-  E -> fun ident fleche E
-  E -> let ident = E in E
-  E -> let rec ident = E in E
-  E -> if E then E else E
-  E -> ER = E
-  E -> ER
-  ER -> ER + T
-  ER -> ER - T
-  ER -> T
-  T -> T * F
-  T -> T / F
-  T -> F
-  F -> - F
-  F -> ( E )
-  F -> ( E ) (E)
-  F -> ident
-  F -> ident (E)
-  F -> true
-  F -> false
-  F -> number
+  * E0 -> fun ident -> E0
+  * E0 -> let ident = E0 in E0
+  * E0 -> letrec ident = E0 in E0
+  * E0 -> if E0 then E0 else E0
+  * E0 -> E
+    E  -> ER = E
+    E  -> ER
+    ER -> ER + T
+    ER -> ER - T
+    ER -> T
+    T -> T * F
+    T -> T / F
+    T -> F
+    F -> - F
+  * F -> ( E0 )
+  * F -> ( E0 ) (E0)
+    F -> ident
+  * F -> ident (E0)
+    F -> true
+    F -> false
+    F -> number
 *)
 
-(*
+(* 
   LL(1)
-  #1  - E -> fun ident -> E
-  #2  - E -> let ident = E in E
-  #3  - E -> let rec ident = E in E
-  #4  - E -> if E then E else E
-  #5  - E -> ER EX
-  #6  - EX -> = ER EX
-  #7  - EX ->
-  #8  - ER -> T TX
-  #9  - TX -> + T TX
+  #1 - E0 -> fun ident -> E0
+  #2 - E0 -> let ident = E0 in E0
+  #3 - E0 -> let rec ident = E0 in E0
+  #4 - E0 -> if E0 then E0 else E0
+  #22 - E0 -> E
+  #5 - E -> ER EX
+  #6 - EX -> = ER EX
+  #7 - EX ->
+  #8 - ER -> T TX 
+  #9 - TX -> + T TX
   #10 - TX -> - T TX
   #11 - TX ->
   #12 - T -> F FX
@@ -46,14 +48,13 @@ type parseResult =
   #14 - FX -> / F FX
   #15 - FX ->
   #16 - F -> - F
-  #17 - F -> number
-  #20 - F -> FF ARG
+  #21 - F -> ( E0 )
+  #18 - F -> ( E0 ) (E0)
+  #19 - F -> ident
+  #20 - F -> ident (E0)
   #21 - F -> true
   #22 - F -> false
-  #23 - FF -> ( E )
-  #24 - FF -> ident
-  #25 - ARG -> ( E )
-  #26 - ARG ->
+  #17 - F -> number
 *)
 
 

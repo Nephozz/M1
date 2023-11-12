@@ -1,0 +1,31 @@
+import 'PetriNet.ecore'
+
+package petrinet
+
+context PetriNet
+inv validName('Invalid name: ' + self.name):
+	self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+
+inv nameIsDefined:
+	if self.name.oclIsUndefined() then
+		false
+	else
+		self.name.size() > 1
+	endif
+
+context Place
+inv uniqueName:
+    self.name->collect(e | e.oclAsType(Place) )
+    ->forAll(pl1, pl2 | pl1 = pl2 or pl1.name <> pl2.name)
+    
+context Transition
+inv uniqueName:
+    self.name->collect(e | e.oclAsType(Transition) )
+    ->forAll(tr1, tr2 | tr1 = tr2 or tr1.name <> tr2.name)
+
+context Arc
+inv linkPlaceAndTransistion: (self.place->notEmpty()) and (self.transition->notEmpty())
+
+context Place
+inv jetonPos: self.jeton >=0
+endpackage

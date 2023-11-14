@@ -20,5 +20,5 @@
             <entry path="/home/nephozz/java_versions/jdk1.8.0_202/jre/lib/endorsed"/>
         </endorsedDirs>
     </libraryInfo>
-    <libraryInfo home="/usr/lib/jvm/java-17-openjdk-amd64" version="17.0.8"/>
+    <libraryInfo home="/usr/lib/jvm/java-17-openjdk-amd64" version="17.0.9"/>
 </libraryInfos>

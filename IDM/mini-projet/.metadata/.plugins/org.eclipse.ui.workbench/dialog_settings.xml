@@ -10,6 +10,7 @@
 		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
 		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/home/nephozz/Downloads/Mini_Projet_IDM-5855f2b59701b2dd161ed7891c54f7a9f4cd79b4/fr.n7.simplepdl2petrinet/src/fr/n7/simplepdl2petrinet"/>
 			<item value="/home/nephozz/Downloads/Mini_Projet_IDM-5855f2b59701b2dd161ed7891c54f7a9f4cd79b4/fr.n7.petrinet"/>
 			<item value="/home/nephozz/Downloads/Mini_Projet_IDM-5855f2b59701b2dd161ed7891c54f7a9f4cd79b4/fr.n7.simplepdl"/>
 		</list>

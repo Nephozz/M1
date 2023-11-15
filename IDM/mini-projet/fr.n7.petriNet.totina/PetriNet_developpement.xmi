@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ASCII"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:petrinet="http://petrinet" name="developpement">
+  <places jeton="1" arc="//@arcs.0" name="Conception_NotStarted"/>
+  <places arc="//@arcs.1 //@arcs.21 //@arcs.23" name="Conception_Started"/>
+  <places arc="//@arcs.2 //@arcs.3" name="Conception_Finishing"/>
+  <places arc="//@arcs.4 //@arcs.20 //@arcs.22" name="Conception_Finished"/>
+  <places jeton="1" arc="//@arcs.5" name="RedactionDoc_NotStarted"/>
+  <places arc="//@arcs.6" name="RedactionDoc_Started"/>
+  <places arc="//@arcs.7 //@arcs.8" name="RedactionDoc_Finishing"/>
+  <places arc="//@arcs.9" name="RedactionDoc_Finished"/>
+  <places jeton="1" arc="//@arcs.10" name="Programmation_NotStarted"/>
+  <places arc="//@arcs.11" name="Programmation_Started"/>
+  <places arc="//@arcs.12 //@arcs.13" name="Programmation_Finishing"/>
+  <places arc="//@arcs.14 //@arcs.24" name="Programmation_Finished"/>
+  <places jeton="1" arc="//@arcs.15" name="RedactionTests_NotStarted"/>
+  <places arc="//@arcs.16" name="RedactionTests_Started"/>
+  <places arc="//@arcs.17 //@arcs.18" name="RedactionTests_Finishing"/>
+  <places arc="//@arcs.19" name="RedactionTests_Finished"/>
+  <transitions arc="//@arcs.0 //@arcs.1 //@arcs.2" name="Conception_starts"/>
+  <transitions arc="//@arcs.3 //@arcs.4" name="Conception_finishes"/>
+  <transitions arc="//@arcs.5 //@arcs.6 //@arcs.7 //@arcs.21" name="RedactionDoc_starts"/>
+  <transitions arc="//@arcs.8 //@arcs.9 //@arcs.20" name="RedactionDoc_finishes"/>
+  <transitions arc="//@arcs.10 //@arcs.11 //@arcs.12 //@arcs.22" name="Programmation_starts"/>
+  <transitions arc="//@arcs.13 //@arcs.14" name="Programmation_finishes"/>
+  <transitions arc="//@arcs.15 //@arcs.16 //@arcs.17 //@arcs.23" name="RedactionTests_starts"/>
+  <transitions arc="//@arcs.18 //@arcs.19 //@arcs.24" name="RedactionTests_finishes"/>
+  <arcs weight="1" place="//@places.0" transition="//@transitions.0"/>
+  <arcs weight="1" place="//@places.1" transition="//@transitions.0" direction="T2P"/>
+  <arcs weight="1" place="//@places.2" transition="//@transitions.0" direction="T2P"/>
+  <arcs place="//@places.2" transition="//@transitions.1"/>
+  <arcs weight="1" place="//@places.3" transition="//@transitions.1" direction="T2P"/>
+  <arcs weight="1" place="//@places.4" transition="//@transitions.2"/>
+  <arcs weight="1" place="//@places.5" transition="//@transitions.2" direction="T2P"/>
+  <arcs weight="1" place="//@places.6" transition="//@transitions.2" direction="T2P"/>
+  <arcs place="//@places.6" transition="//@transitions.3"/>
+  <arcs weight="1" place="//@places.7" transition="//@transitions.3" direction="T2P"/>
+  <arcs weight="1" place="//@places.8" transition="//@transitions.4"/>
+  <arcs weight="1" place="//@places.9" transition="//@transitions.4" direction="T2P"/>
+  <arcs weight="1" place="//@places.10" transition="//@transitions.4" direction="T2P"/>
+  <arcs place="//@places.10" transition="//@transitions.5"/>
+  <arcs weight="1" place="//@places.11" transition="//@transitions.5" direction="T2P"/>
+  <arcs weight="1" place="//@places.12" transition="//@transitions.6"/>
+  <arcs weight="1" place="//@places.13" transition="//@transitions.6" direction="T2P"/>
+  <arcs weight="1" place="//@places.14" transition="//@transitions.6" direction="T2P"/>
+  <arcs place="//@places.14" transition="//@transitions.7"/>
+  <arcs weight="1" place="//@places.15" transition="//@transitions.7" direction="T2P"/>
+  <arcs weight="1" kind="READ" place="//@places.3" transition="//@transitions.3"/>
+  <arcs weight="1" kind="READ" place="//@places.1" transition="//@transitions.2"/>
+  <arcs weight="1" kind="READ" place="//@places.3" transition="//@transitions.4"/>
+  <arcs weight="1" kind="READ" place="//@places.1" transition="//@transitions.6"/>
+  <arcs weight="1" kind="READ" place="//@places.11" transition="//@transitions.7"/>
+</petrinet:PetriNet>

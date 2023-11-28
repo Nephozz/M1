@@ -161,7 +161,7 @@ module F : Frame =
     let box_y = (0.,1080.)
   end
 
-let etat0 = ((320.,400.),(400.,0.))
+let etat0 = ((320.,400.),(200.,0.))
 
 module FF = FreeFall (F)
 module D = Drawing (F)

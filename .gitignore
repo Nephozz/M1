@@ -3,35 +3,54 @@
 #*.com
 *.class
 #*.dll
-#*.exe
-#*.o
+*.exe
+*.o
 #*.so
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+*.cmx
+*.cmxs
+*.cmxa
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.byte
+*.native
 
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
 # git has its own built in compression methods
-#*.7z
+*.7z
 #*.dmg
-#*.gz
+*.gz
 #*.iso
 #*.jar
-#*.rar
+*.rar
 *.tar
+*.tar.gz
 *.zip
 *.tgz
+*.war
+*.nar
+*.ear
 
 # Logs and databases #
 ######################
-#*.log
+*.log
 #*.sql
 #*.sqlite
+*.ctxt
+*.install
 
 # OS generated files #
 ######################
-#.DS_Store
-#.DS_Store?
-#._*
+.DS_Store
+.DS_Store?
+._*
 #.Spotlight-V100
 #.Trashes
 #ehthumbs.db
@@ -41,5 +60,27 @@
 #########
 # ignore all files in any directory named _build
 _build/
+.merlin
+_opam/
 .metadata/
 .ipynb_checkpoints/
+docs/build/
+docs/site/
+
+
+workspace.xml
+junitvmwatcher*.properties
+build.properties
+
+# generated java classes and java source files
+#   manually add any custom artifacts that can't be generated from the models
+#   http://confluence.jetbrains.com/display/MPSD25/HowTo+--+MPS+and+Git
+classes_gen
+source_gen
+source_gen.caches
+
+# generated test code and test results
+test_gen
+test_gen.caches
+TEST-*.xml
+junit*.properties

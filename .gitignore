@@ -39,7 +39,6 @@
 
 # Files #
 #########
-# ignore all files in any directory named _build
 _build/
 .metadata/
 .ipynb_checkpoints/

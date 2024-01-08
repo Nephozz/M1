@@ -11,7 +11,7 @@ G=sparse(D);
 %%%%%%%%%%%%%%%%%%%%%% EXO SPT %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %0)Choose arbitrary src node for spt
-src=14;
+src=4;
 %1)Compute SPT rooted in src node
 [wp spt_]=shortest_paths(G,src); %wp=weight path, spt_=shortsetpathtree structure
 %2)Vizualize
@@ -21,7 +21,7 @@ viz_spt(G,spt_,pos,cities);
 
 %1)Compute MST by PRIM 
 %changer les valeurs initiales pour obtenir deux arbres differents entre PRIM et KRUSKAL
-mst_=prim_mst(G,struct('root',XXX a faire));
+mst_=prim_mst(G,struct('root',1));
 %2)Vizualize
 viz_mst(G,mst_,pos,cities);
 
@@ -50,11 +50,11 @@ bw(n+2,dsts)=virtual_capacity;
 bw(dsts,n+2)=virtual_capacity; 
 
 %bandwidth is invertly proportinal to distance
-bw(1:n,1:n)=XXX a faire;
+bw(1:n,1:n)=10000./D(1:n,1:n);
 %Inf is on the diagonal, so change it to 0
 bw(bw==Inf)=0;
 %links with too less bw are not interesting for operators
-XXX Filtrage des liens non exploitable a faire;%for europe
+bw = bw .*(bw > 11);%for europe
 
 %2)Compute Max flow bw virtual src & dst nodes
 Gbw=sparse(bw);

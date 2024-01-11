@@ -15,10 +15,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link petrinet.PetriNet#getPlaces <em>Places</em>}</li>
- *   <li>{@link petrinet.PetriNet#getTransitions <em>Transitions</em>}</li>
- *   <li>{@link petrinet.PetriNet#getArcs <em>Arcs</em>}</li>
  *   <li>{@link petrinet.PetriNet#getName <em>Name</em>}</li>
+ *   <li>{@link petrinet.PetriNet#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link petrinet.PetriNet#getArcs <em>Arcs</em>}</li>
  * </ul>
  *
  * @see petrinet.PetrinetPackage#getPetriNet()
@@ -26,42 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface PetriNet extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Places</b></em>' containment reference list.
-	 * The list contents are of type {@link petrinet.Place}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Places</em>' containment reference list.
-	 * @see petrinet.PetrinetPackage#getPetriNet_Places()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Place> getPlaces();
-
-	/**
-	 * Returns the value of the '<em><b>Transitions</b></em>' containment reference list.
-	 * The list contents are of type {@link petrinet.Transition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transitions</em>' containment reference list.
-	 * @see petrinet.PetrinetPackage#getPetriNet_Transitions()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Transition> getTransitions();
-
-	/**
-	 * Returns the value of the '<em><b>Arcs</b></em>' containment reference list.
-	 * The list contents are of type {@link petrinet.Arc}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Arcs</em>' containment reference list.
-	 * @see petrinet.PetrinetPackage#getPetriNet_Arcs()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Arc> getArcs();
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -83,5 +46,29 @@ public interface PetriNet extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.
+	 * The list contents are of type {@link petrinet.Node}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Nodes</em>' containment reference list.
+	 * @see petrinet.PetrinetPackage#getPetriNet_Nodes()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Node> getNodes();
+
+	/**
+	 * Returns the value of the '<em><b>Arcs</b></em>' containment reference list.
+	 * The list contents are of type {@link petrinet.Arc}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Arcs</em>' containment reference list.
+	 * @see petrinet.PetrinetPackage#getPetriNet_Arcs()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Arc> getArcs();
 
 } // PetriNet

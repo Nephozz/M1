@@ -26,13 +26,23 @@ import simplepdl.SimplepdlPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link simplepdl.impl.GuidanceImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link simplepdl.impl.GuidanceImpl#getText <em>Text</em>}</li>
- *   <li>{@link simplepdl.impl.GuidanceImpl#getElement <em>Element</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class GuidanceImpl extends ProcessElementImpl implements Guidance {
+	/**
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ProcessElement> elements;
+
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,16 +64,6 @@ public class GuidanceImpl extends ProcessElementImpl implements Guidance {
 	protected String text = TEXT_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getElement() <em>Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ProcessElement> element;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,6 +80,18 @@ public class GuidanceImpl extends ProcessElementImpl implements Guidance {
 	@Override
 	protected EClass eStaticClass() {
 		return SimplepdlPackage.Literals.GUIDANCE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ProcessElement> getElements() {
+		if (elements == null) {
+			elements = new EObjectResolvingEList<ProcessElement>(ProcessElement.class, this, SimplepdlPackage.GUIDANCE__ELEMENTS);
+		}
+		return elements;
 	}
 
 	/**
@@ -108,25 +120,13 @@ public class GuidanceImpl extends ProcessElementImpl implements Guidance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcessElement> getElement() {
-		if (element == null) {
-			element = new EObjectResolvingEList<ProcessElement>(ProcessElement.class, this, SimplepdlPackage.GUIDANCE__ELEMENT);
-		}
-		return element;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case SimplepdlPackage.GUIDANCE__ELEMENTS:
+				return getElements();
 			case SimplepdlPackage.GUIDANCE__TEXT:
 				return getText();
-			case SimplepdlPackage.GUIDANCE__ELEMENT:
-				return getElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -140,12 +140,12 @@ public class GuidanceImpl extends ProcessElementImpl implements Guidance {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case SimplepdlPackage.GUIDANCE__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends ProcessElement>)newValue);
+				return;
 			case SimplepdlPackage.GUIDANCE__TEXT:
 				setText((String)newValue);
-				return;
-			case SimplepdlPackage.GUIDANCE__ELEMENT:
-				getElement().clear();
-				getElement().addAll((Collection<? extends ProcessElement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -159,11 +159,11 @@ public class GuidanceImpl extends ProcessElementImpl implements Guidance {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case SimplepdlPackage.GUIDANCE__ELEMENTS:
+				getElements().clear();
+				return;
 			case SimplepdlPackage.GUIDANCE__TEXT:
 				setText(TEXT_EDEFAULT);
-				return;
-			case SimplepdlPackage.GUIDANCE__ELEMENT:
-				getElement().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -177,10 +177,10 @@ public class GuidanceImpl extends ProcessElementImpl implements Guidance {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case SimplepdlPackage.GUIDANCE__ELEMENTS:
+				return elements != null && !elements.isEmpty();
 			case SimplepdlPackage.GUIDANCE__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case SimplepdlPackage.GUIDANCE__ELEMENT:
-				return element != null && !element.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

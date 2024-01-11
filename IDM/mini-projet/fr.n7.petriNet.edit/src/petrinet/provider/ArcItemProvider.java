@@ -62,9 +62,10 @@ public class ArcItemProvider
 
 			addWeightPropertyDescriptor(object);
 			addKindPropertyDescriptor(object);
-			addPlacePropertyDescriptor(object);
-			addTransitionPropertyDescriptor(object);
+			addSourcePropertyDescriptor(object);
+			addTargetPropertyDescriptor(object);
 			addDirectionPropertyDescriptor(object);
+			addPetriPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -114,19 +115,19 @@ public class ArcItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Place feature.
+	 * This adds a property descriptor for the Source feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPlacePropertyDescriptor(Object object) {
+	protected void addSourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Arc_place_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Arc_place_feature", "_UI_Arc_type"),
-				 PetrinetPackage.Literals.ARC__PLACE,
+				 getString("_UI_Arc_source_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Arc_source_feature", "_UI_Arc_type"),
+				 PetrinetPackage.Literals.ARC__SOURCE,
 				 true,
 				 false,
 				 true,
@@ -136,19 +137,19 @@ public class ArcItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Transition feature.
+	 * This adds a property descriptor for the Target feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTransitionPropertyDescriptor(Object object) {
+	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Arc_transition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Arc_transition_feature", "_UI_Arc_type"),
-				 PetrinetPackage.Literals.ARC__TRANSITION,
+				 getString("_UI_Arc_target_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Arc_target_feature", "_UI_Arc_type"),
+				 PetrinetPackage.Literals.ARC__TARGET,
 				 true,
 				 false,
 				 true,
@@ -175,6 +176,28 @@ public class ArcItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Petri feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPetriPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Arc_petri_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Arc_petri_feature", "_UI_Arc_type"),
+				 PetrinetPackage.Literals.ARC__PETRI,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

@@ -61,6 +61,7 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 			case PetrinetPackage.PLACE: return createPlace();
 			case PetrinetPackage.TRANSITION: return createTransition();
 			case PetrinetPackage.ARC: return createArc();
+			case PetrinetPackage.NODE: return createNode();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,10 +75,10 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case PetrinetPackage.ARC_DIRECTION:
-				return createArcDirectionFromString(eDataType, initialValue);
 			case PetrinetPackage.ARC_KIND:
 				return createArcKindFromString(eDataType, initialValue);
+			case PetrinetPackage.ARC_DIRECTION:
+				return createArcDirectionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -91,10 +92,10 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case PetrinetPackage.ARC_DIRECTION:
-				return convertArcDirectionToString(eDataType, instanceValue);
 			case PetrinetPackage.ARC_KIND:
 				return convertArcKindToString(eDataType, instanceValue);
+			case PetrinetPackage.ARC_DIRECTION:
+				return convertArcDirectionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -145,19 +146,9 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArcDirection createArcDirectionFromString(EDataType eDataType, String initialValue) {
-		ArcDirection result = ArcDirection.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertArcDirectionToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
+	public Node createNode() {
+		NodeImpl node = new NodeImpl();
+		return node;
 	}
 
 	/**
@@ -177,6 +168,26 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	 * @generated
 	 */
 	public String convertArcKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ArcDirection createArcDirectionFromString(EDataType eDataType, String initialValue) {
+		ArcDirection result = ArcDirection.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertArcDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import simplepdl.Guidance;
 import simplepdl.ProcessElement;
-import simplepdl.RessourceNeeded;
-import simplepdl.RessourceType;
+import simplepdl.Ressource;
+import simplepdl.RessourceUsed;
 import simplepdl.SimplepdlFactory;
 import simplepdl.SimplepdlPackage;
 import simplepdl.WorkDefinition;
@@ -39,7 +39,7 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass ressourceNeededEClass = null;
+	private EClass processElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -60,21 +60,21 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass processElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass ressourceTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass guidanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ressourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ressourceUsedEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,26 +176,8 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRessourceNeeded() {
-		return ressourceNeededEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getRessourceNeeded_QuantityNeeded() {
-		return (EAttribute)ressourceNeededEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRessourceNeeded_Ressource() {
-		return (EReference)ressourceNeededEClass.getEStructuralFeatures().get(1);
+	public EClass getProcessElement() {
+		return processElementEClass;
 	}
 
 	/**
@@ -239,7 +221,7 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWorkDefinition_Quantity() {
+	public EReference getWorkDefinition_RessourcesUsed() {
 		return (EReference)workDefinitionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -284,42 +266,6 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getProcessElement() {
-		return processElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getRessourceType() {
-		return ressourceTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getRessourceType_Name() {
-		return (EAttribute)ressourceTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getRessourceType_Quantity() {
-		return (EAttribute)ressourceTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getGuidance() {
 		return guidanceEClass;
 	}
@@ -329,8 +275,8 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGuidance_Text() {
-		return (EAttribute)guidanceEClass.getEStructuralFeatures().get(0);
+	public EReference getGuidance_Elements() {
+		return (EReference)guidanceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -338,8 +284,71 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGuidance_Element() {
-		return (EReference)guidanceEClass.getEStructuralFeatures().get(1);
+	public EAttribute getGuidance_Text() {
+		return (EAttribute)guidanceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRessource() {
+		return ressourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRessource_Name() {
+		return (EAttribute)ressourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRessource_Quantity() {
+		return (EAttribute)ressourceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRessourceUsed() {
+		return ressourceUsedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRessourceUsed_Occ() {
+		return (EAttribute)ressourceUsedEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRessourceUsed_Ressources() {
+		return (EReference)ressourceUsedEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRessourceUsed_Workdefinition() {
+		return (EReference)ressourceUsedEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -383,30 +392,31 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 		createEAttribute(processEClass, PROCESS__NAME);
 		createEReference(processEClass, PROCESS__PROCESS_ELEMENTS);
 
-		ressourceNeededEClass = createEClass(RESSOURCE_NEEDED);
-		createEAttribute(ressourceNeededEClass, RESSOURCE_NEEDED__QUANTITY_NEEDED);
-		createEReference(ressourceNeededEClass, RESSOURCE_NEEDED__RESSOURCE);
+		processElementEClass = createEClass(PROCESS_ELEMENT);
 
 		workDefinitionEClass = createEClass(WORK_DEFINITION);
 		createEReference(workDefinitionEClass, WORK_DEFINITION__LINKS_TO_PREDECESSORS);
 		createEReference(workDefinitionEClass, WORK_DEFINITION__LINKS_TO_SUCCESSORS);
 		createEAttribute(workDefinitionEClass, WORK_DEFINITION__NAME);
-		createEReference(workDefinitionEClass, WORK_DEFINITION__QUANTITY);
+		createEReference(workDefinitionEClass, WORK_DEFINITION__RESSOURCES_USED);
 
 		workSequenceEClass = createEClass(WORK_SEQUENCE);
 		createEAttribute(workSequenceEClass, WORK_SEQUENCE__LINK_TYPE);
 		createEReference(workSequenceEClass, WORK_SEQUENCE__PREDECESSOR);
 		createEReference(workSequenceEClass, WORK_SEQUENCE__SUCCESSOR);
 
-		processElementEClass = createEClass(PROCESS_ELEMENT);
-
-		ressourceTypeEClass = createEClass(RESSOURCE_TYPE);
-		createEAttribute(ressourceTypeEClass, RESSOURCE_TYPE__NAME);
-		createEAttribute(ressourceTypeEClass, RESSOURCE_TYPE__QUANTITY);
-
 		guidanceEClass = createEClass(GUIDANCE);
+		createEReference(guidanceEClass, GUIDANCE__ELEMENTS);
 		createEAttribute(guidanceEClass, GUIDANCE__TEXT);
-		createEReference(guidanceEClass, GUIDANCE__ELEMENT);
+
+		ressourceEClass = createEClass(RESSOURCE);
+		createEAttribute(ressourceEClass, RESSOURCE__NAME);
+		createEAttribute(ressourceEClass, RESSOURCE__QUANTITY);
+
+		ressourceUsedEClass = createEClass(RESSOURCE_USED);
+		createEAttribute(ressourceUsedEClass, RESSOURCE_USED__OCC);
+		createEReference(ressourceUsedEClass, RESSOURCE_USED__RESSOURCES);
+		createEReference(ressourceUsedEClass, RESSOURCE_USED__WORKDEFINITION);
 
 		// Create enums
 		workSequenceTypeEEnum = createEEnum(WORK_SEQUENCE_TYPE);
@@ -442,38 +452,39 @@ public class SimplepdlPackageImpl extends EPackageImpl implements SimplepdlPacka
 		// Add supertypes to classes
 		workDefinitionEClass.getESuperTypes().add(this.getProcessElement());
 		workSequenceEClass.getESuperTypes().add(this.getProcessElement());
-		ressourceTypeEClass.getESuperTypes().add(this.getProcessElement());
 		guidanceEClass.getESuperTypes().add(this.getProcessElement());
+		ressourceEClass.getESuperTypes().add(this.getProcessElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(processEClass, simplepdl.Process.class, "Process", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcess_Name(), ecorePackage.getEString(), "name", null, 1, 1, simplepdl.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcess_ProcessElements(), this.getProcessElement(), null, "processElements", null, 0, -1, simplepdl.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(ressourceNeededEClass, RessourceNeeded.class, "RessourceNeeded", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRessourceNeeded_QuantityNeeded(), ecorePackage.getEInt(), "quantityNeeded", null, 1, 1, RessourceNeeded.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRessourceNeeded_Ressource(), this.getRessourceType(), null, "ressource", null, 1, 1, RessourceNeeded.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(processElementEClass, ProcessElement.class, "ProcessElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(workDefinitionEClass, WorkDefinition.class, "WorkDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWorkDefinition_LinksToPredecessors(), this.getWorkSequence(), this.getWorkSequence_Successor(), "linksToPredecessors", null, 0, -1, WorkDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkDefinition_LinksToSuccessors(), this.getWorkSequence(), this.getWorkSequence_Predecessor(), "linksToSuccessors", null, 0, -1, WorkDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWorkDefinition_Name(), ecorePackage.getEString(), "name", null, 1, 1, WorkDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkDefinition_Quantity(), this.getRessourceNeeded(), null, "quantity", null, 0, -1, WorkDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkDefinition_RessourcesUsed(), this.getRessourceUsed(), this.getRessourceUsed_Workdefinition(), "ressourcesUsed", null, 0, -1, WorkDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workSequenceEClass, WorkSequence.class, "WorkSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getWorkSequence_LinkType(), this.getWorkSequenceType(), "linkType", null, 1, 1, WorkSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkSequence_Predecessor(), this.getWorkDefinition(), this.getWorkDefinition_LinksToSuccessors(), "predecessor", null, 1, 1, WorkSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkSequence_Successor(), this.getWorkDefinition(), this.getWorkDefinition_LinksToPredecessors(), "successor", null, 1, 1, WorkSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(processElementEClass, ProcessElement.class, "ProcessElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(ressourceTypeEClass, RessourceType.class, "RessourceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRessourceType_Name(), ecorePackage.getEString(), "name", null, 1, 1, RessourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRessourceType_Quantity(), ecorePackage.getEInt(), "quantity", null, 1, 1, RessourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(guidanceEClass, Guidance.class, "Guidance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGuidance_Elements(), this.getProcessElement(), null, "elements", null, 0, -1, Guidance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGuidance_Text(), ecorePackage.getEString(), "text", null, 1, 1, Guidance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGuidance_Element(), this.getProcessElement(), null, "element", null, 0, -1, Guidance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ressourceEClass, Ressource.class, "Ressource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRessource_Name(), ecorePackage.getEString(), "name", null, 1, 1, Ressource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRessource_Quantity(), ecorePackage.getEInt(), "quantity", null, 1, 1, Ressource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ressourceUsedEClass, RessourceUsed.class, "RessourceUsed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRessourceUsed_Occ(), ecorePackage.getEInt(), "occ", null, 1, 1, RessourceUsed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRessourceUsed_Ressources(), this.getRessource(), null, "ressources", null, 1, 1, RessourceUsed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRessourceUsed_Workdefinition(), this.getWorkDefinition(), this.getWorkDefinition_RessourcesUsed(), "workdefinition", null, 1, 1, RessourceUsed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(workSequenceTypeEEnum, WorkSequenceType.class, "WorkSequenceType");

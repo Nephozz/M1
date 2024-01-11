@@ -11,8 +11,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import simplepdl.Guidance;
 import simplepdl.ProcessElement;
-import simplepdl.RessourceNeeded;
-import simplepdl.RessourceType;
+import simplepdl.Ressource;
+import simplepdl.RessourceUsed;
 import simplepdl.SimplepdlPackage;
 import simplepdl.WorkDefinition;
 import simplepdl.WorkSequence;
@@ -78,8 +78,8 @@ public class SimplepdlAdapterFactory extends AdapterFactoryImpl {
 				return createProcessAdapter();
 			}
 			@Override
-			public Adapter caseRessourceNeeded(RessourceNeeded object) {
-				return createRessourceNeededAdapter();
+			public Adapter caseProcessElement(ProcessElement object) {
+				return createProcessElementAdapter();
 			}
 			@Override
 			public Adapter caseWorkDefinition(WorkDefinition object) {
@@ -90,16 +90,16 @@ public class SimplepdlAdapterFactory extends AdapterFactoryImpl {
 				return createWorkSequenceAdapter();
 			}
 			@Override
-			public Adapter caseProcessElement(ProcessElement object) {
-				return createProcessElementAdapter();
-			}
-			@Override
-			public Adapter caseRessourceType(RessourceType object) {
-				return createRessourceTypeAdapter();
-			}
-			@Override
 			public Adapter caseGuidance(Guidance object) {
 				return createGuidanceAdapter();
+			}
+			@Override
+			public Adapter caseRessource(Ressource object) {
+				return createRessourceAdapter();
+			}
+			@Override
+			public Adapter caseRessourceUsed(RessourceUsed object) {
+				return createRessourceUsedAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -136,16 +136,16 @@ public class SimplepdlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simplepdl.RessourceNeeded <em>Ressource Needed</em>}'.
+	 * Creates a new adapter for an object of class '{@link simplepdl.ProcessElement <em>Process Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simplepdl.RessourceNeeded
+	 * @see simplepdl.ProcessElement
 	 * @generated
 	 */
-	public Adapter createRessourceNeededAdapter() {
+	public Adapter createProcessElementAdapter() {
 		return null;
 	}
 
@@ -178,34 +178,6 @@ public class SimplepdlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simplepdl.ProcessElement <em>Process Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see simplepdl.ProcessElement
-	 * @generated
-	 */
-	public Adapter createProcessElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link simplepdl.RessourceType <em>Ressource Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see simplepdl.RessourceType
-	 * @generated
-	 */
-	public Adapter createRessourceTypeAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link simplepdl.Guidance <em>Guidance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -216,6 +188,34 @@ public class SimplepdlAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGuidanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link simplepdl.Ressource <em>Ressource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see simplepdl.Ressource
+	 * @generated
+	 */
+	public Adapter createRessourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link simplepdl.RessourceUsed <em>Ressource Used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see simplepdl.RessourceUsed
+	 * @generated
+	 */
+	public Adapter createRessourceUsedAdapter() {
 		return null;
 	}
 

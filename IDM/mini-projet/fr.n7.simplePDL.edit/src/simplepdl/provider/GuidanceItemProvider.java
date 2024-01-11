@@ -45,10 +45,32 @@ public class GuidanceItemProvider extends ProcessElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addElementsPropertyDescriptor(object);
 			addTextPropertyDescriptor(object);
-			addElementPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Elements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addElementsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Guidance_elements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Guidance_elements_feature", "_UI_Guidance_type"),
+				 SimplepdlPackage.Literals.GUIDANCE__ELEMENTS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -69,28 +91,6 @@ public class GuidanceItemProvider extends ProcessElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Element feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Guidance_element_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Guidance_element_feature", "_UI_Guidance_type"),
-				 SimplepdlPackage.Literals.GUIDANCE__ELEMENT,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}

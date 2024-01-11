@@ -19,42 +19,42 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ArcKind implements Enumerator {
 	/**
-	 * The '<em><b>NORMAL</b></em>' literal object.
+	 * The '<em><b>Normal</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #NORMAL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NORMAL(0, "NORMAL", "NORMAL"),
+	NORMAL(0, "normal", "normal"),
 
 	/**
-	 * The '<em><b>READ</b></em>' literal object.
+	 * The '<em><b>Read</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #READ_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	READ(1, "READ", "READ");
+	READ(1, "read", "read");
 
 	/**
-	 * The '<em><b>NORMAL</b></em>' literal value.
+	 * The '<em><b>Normal</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #NORMAL
-	 * @model
+	 * @model name="normal"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int NORMAL_VALUE = 0;
 
 	/**
-	 * The '<em><b>READ</b></em>' literal value.
+	 * The '<em><b>Read</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #READ
-	 * @model
+	 * @model name="read"
 	 * @generated
 	 * @ordered
 	 */

@@ -134,7 +134,7 @@ public class WorkSequenceItemProvider extends ProcessElementItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
@@ -144,8 +144,8 @@ public class WorkSequenceItemProvider extends ProcessElementItemProvider {
 		String previous = ws.getPredecessor() == null ? "?" : ws.getPredecessor().getName();
 		String next = ws.getSuccessor() == null ? "?" : ws.getSuccessor().getName();
 		return label == null || label.length() == 0 ?
-		getString("_UI_WorkSequence_type") :
-		getString("_UI_WorkSequence_type") + " " + previous + " " + label + " " + next;
+			getString("_UI_WorkSequence_type") :
+			getString("_UI_WorkSequence_type") + " " + previous + " " + label + " " + next;
 	}
 
 
@@ -161,6 +161,8 @@ public class WorkSequenceItemProvider extends ProcessElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(WorkSequence.class)) {
+			case SimplepdlPackage.WORK_SEQUENCE__PREDECESSOR:
+			case SimplepdlPackage.WORK_SEQUENCE__SUCCESSOR:
 			case SimplepdlPackage.WORK_SEQUENCE__LINK_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

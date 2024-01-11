@@ -104,52 +104,6 @@ public interface SimplepdlPackage extends EPackage {
 	int PROCESS_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link simplepdl.impl.RessourceNeededImpl <em>Ressource Needed</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see simplepdl.impl.RessourceNeededImpl
-	 * @see simplepdl.impl.SimplepdlPackageImpl#getRessourceNeeded()
-	 * @generated
-	 */
-	int RESSOURCE_NEEDED = 1;
-
-	/**
-	 * The feature id for the '<em><b>Quantity Needed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESSOURCE_NEEDED__QUANTITY_NEEDED = 0;
-
-	/**
-	 * The feature id for the '<em><b>Ressource</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESSOURCE_NEEDED__RESSOURCE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Ressource Needed</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESSOURCE_NEEDED_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Ressource Needed</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESSOURCE_NEEDED_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link simplepdl.impl.ProcessElementImpl <em>Process Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -157,7 +111,7 @@ public interface SimplepdlPackage extends EPackage {
 	 * @see simplepdl.impl.SimplepdlPackageImpl#getProcessElement()
 	 * @generated
 	 */
-	int PROCESS_ELEMENT = 4;
+	int PROCESS_ELEMENT = 1;
 
 	/**
 	 * The number of structural features of the '<em>Process Element</em>' class.
@@ -215,13 +169,13 @@ public interface SimplepdlPackage extends EPackage {
 	int WORK_DEFINITION__NAME = PROCESS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Quantity</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Ressources Used</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_DEFINITION__QUANTITY = PROCESS_ELEMENT_FEATURE_COUNT + 3;
+	int WORK_DEFINITION__RESSOURCES_USED = PROCESS_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Work Definition</em>' class.
@@ -297,52 +251,6 @@ public interface SimplepdlPackage extends EPackage {
 	int WORK_SEQUENCE_OPERATION_COUNT = PROCESS_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simplepdl.impl.RessourceTypeImpl <em>Ressource Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see simplepdl.impl.RessourceTypeImpl
-	 * @see simplepdl.impl.SimplepdlPackageImpl#getRessourceType()
-	 * @generated
-	 */
-	int RESSOURCE_TYPE = 5;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESSOURCE_TYPE__NAME = PROCESS_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Quantity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESSOURCE_TYPE__QUANTITY = PROCESS_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Ressource Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESSOURCE_TYPE_FEATURE_COUNT = PROCESS_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Ressource Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESSOURCE_TYPE_OPERATION_COUNT = PROCESS_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link simplepdl.impl.GuidanceImpl <em>Guidance</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -350,7 +258,16 @@ public interface SimplepdlPackage extends EPackage {
 	 * @see simplepdl.impl.SimplepdlPackageImpl#getGuidance()
 	 * @generated
 	 */
-	int GUIDANCE = 6;
+	int GUIDANCE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUIDANCE__ELEMENTS = PROCESS_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -359,16 +276,7 @@ public interface SimplepdlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GUIDANCE__TEXT = PROCESS_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GUIDANCE__ELEMENT = PROCESS_ELEMENT_FEATURE_COUNT + 1;
+	int GUIDANCE__TEXT = PROCESS_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Guidance</em>' class.
@@ -387,6 +295,107 @@ public interface SimplepdlPackage extends EPackage {
 	 * @ordered
 	 */
 	int GUIDANCE_OPERATION_COUNT = PROCESS_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link simplepdl.impl.RessourceImpl <em>Ressource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see simplepdl.impl.RessourceImpl
+	 * @see simplepdl.impl.SimplepdlPackageImpl#getRessource()
+	 * @generated
+	 */
+	int RESSOURCE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE__NAME = PROCESS_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Quantity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE__QUANTITY = PROCESS_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Ressource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE_FEATURE_COUNT = PROCESS_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Ressource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE_OPERATION_COUNT = PROCESS_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link simplepdl.impl.RessourceUsedImpl <em>Ressource Used</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see simplepdl.impl.RessourceUsedImpl
+	 * @see simplepdl.impl.SimplepdlPackageImpl#getRessourceUsed()
+	 * @generated
+	 */
+	int RESSOURCE_USED = 6;
+
+	/**
+	 * The feature id for the '<em><b>Occ</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE_USED__OCC = 0;
+
+	/**
+	 * The feature id for the '<em><b>Ressources</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE_USED__RESSOURCES = 1;
+
+	/**
+	 * The feature id for the '<em><b>Workdefinition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE_USED__WORKDEFINITION = 2;
+
+	/**
+	 * The number of structural features of the '<em>Ressource Used</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE_USED_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Ressource Used</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESSOURCE_USED_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link simplepdl.WorkSequenceType <em>Work Sequence Type</em>}' enum.
@@ -432,36 +441,14 @@ public interface SimplepdlPackage extends EPackage {
 	EReference getProcess_ProcessElements();
 
 	/**
-	 * Returns the meta object for class '{@link simplepdl.RessourceNeeded <em>Ressource Needed</em>}'.
+	 * Returns the meta object for class '{@link simplepdl.ProcessElement <em>Process Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Ressource Needed</em>'.
-	 * @see simplepdl.RessourceNeeded
+	 * @return the meta object for class '<em>Process Element</em>'.
+	 * @see simplepdl.ProcessElement
 	 * @generated
 	 */
-	EClass getRessourceNeeded();
-
-	/**
-	 * Returns the meta object for the attribute '{@link simplepdl.RessourceNeeded#getQuantityNeeded <em>Quantity Needed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Quantity Needed</em>'.
-	 * @see simplepdl.RessourceNeeded#getQuantityNeeded()
-	 * @see #getRessourceNeeded()
-	 * @generated
-	 */
-	EAttribute getRessourceNeeded_QuantityNeeded();
-
-	/**
-	 * Returns the meta object for the reference '{@link simplepdl.RessourceNeeded#getRessource <em>Ressource</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Ressource</em>'.
-	 * @see simplepdl.RessourceNeeded#getRessource()
-	 * @see #getRessourceNeeded()
-	 * @generated
-	 */
-	EReference getRessourceNeeded_Ressource();
+	EClass getProcessElement();
 
 	/**
 	 * Returns the meta object for class '{@link simplepdl.WorkDefinition <em>Work Definition</em>}'.
@@ -507,15 +494,15 @@ public interface SimplepdlPackage extends EPackage {
 	EAttribute getWorkDefinition_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link simplepdl.WorkDefinition#getQuantity <em>Quantity</em>}'.
+	 * Returns the meta object for the containment reference list '{@link simplepdl.WorkDefinition#getRessourcesUsed <em>Ressources Used</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Quantity</em>'.
-	 * @see simplepdl.WorkDefinition#getQuantity()
+	 * @return the meta object for the containment reference list '<em>Ressources Used</em>'.
+	 * @see simplepdl.WorkDefinition#getRessourcesUsed()
 	 * @see #getWorkDefinition()
 	 * @generated
 	 */
-	EReference getWorkDefinition_Quantity();
+	EReference getWorkDefinition_RessourcesUsed();
 
 	/**
 	 * Returns the meta object for class '{@link simplepdl.WorkSequence <em>Work Sequence</em>}'.
@@ -561,48 +548,6 @@ public interface SimplepdlPackage extends EPackage {
 	EReference getWorkSequence_Successor();
 
 	/**
-	 * Returns the meta object for class '{@link simplepdl.ProcessElement <em>Process Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Process Element</em>'.
-	 * @see simplepdl.ProcessElement
-	 * @generated
-	 */
-	EClass getProcessElement();
-
-	/**
-	 * Returns the meta object for class '{@link simplepdl.RessourceType <em>Ressource Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Ressource Type</em>'.
-	 * @see simplepdl.RessourceType
-	 * @generated
-	 */
-	EClass getRessourceType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link simplepdl.RessourceType#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see simplepdl.RessourceType#getName()
-	 * @see #getRessourceType()
-	 * @generated
-	 */
-	EAttribute getRessourceType_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link simplepdl.RessourceType#getQuantity <em>Quantity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Quantity</em>'.
-	 * @see simplepdl.RessourceType#getQuantity()
-	 * @see #getRessourceType()
-	 * @generated
-	 */
-	EAttribute getRessourceType_Quantity();
-
-	/**
 	 * Returns the meta object for class '{@link simplepdl.Guidance <em>Guidance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,6 +556,17 @@ public interface SimplepdlPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getGuidance();
+
+	/**
+	 * Returns the meta object for the reference list '{@link simplepdl.Guidance#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Elements</em>'.
+	 * @see simplepdl.Guidance#getElements()
+	 * @see #getGuidance()
+	 * @generated
+	 */
+	EReference getGuidance_Elements();
 
 	/**
 	 * Returns the meta object for the attribute '{@link simplepdl.Guidance#getText <em>Text</em>}'.
@@ -624,15 +580,79 @@ public interface SimplepdlPackage extends EPackage {
 	EAttribute getGuidance_Text();
 
 	/**
-	 * Returns the meta object for the reference list '{@link simplepdl.Guidance#getElement <em>Element</em>}'.
+	 * Returns the meta object for class '{@link simplepdl.Ressource <em>Ressource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Element</em>'.
-	 * @see simplepdl.Guidance#getElement()
-	 * @see #getGuidance()
+	 * @return the meta object for class '<em>Ressource</em>'.
+	 * @see simplepdl.Ressource
 	 * @generated
 	 */
-	EReference getGuidance_Element();
+	EClass getRessource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simplepdl.Ressource#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see simplepdl.Ressource#getName()
+	 * @see #getRessource()
+	 * @generated
+	 */
+	EAttribute getRessource_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simplepdl.Ressource#getQuantity <em>Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Quantity</em>'.
+	 * @see simplepdl.Ressource#getQuantity()
+	 * @see #getRessource()
+	 * @generated
+	 */
+	EAttribute getRessource_Quantity();
+
+	/**
+	 * Returns the meta object for class '{@link simplepdl.RessourceUsed <em>Ressource Used</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ressource Used</em>'.
+	 * @see simplepdl.RessourceUsed
+	 * @generated
+	 */
+	EClass getRessourceUsed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simplepdl.RessourceUsed#getOcc <em>Occ</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occ</em>'.
+	 * @see simplepdl.RessourceUsed#getOcc()
+	 * @see #getRessourceUsed()
+	 * @generated
+	 */
+	EAttribute getRessourceUsed_Occ();
+
+	/**
+	 * Returns the meta object for the reference '{@link simplepdl.RessourceUsed#getRessources <em>Ressources</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Ressources</em>'.
+	 * @see simplepdl.RessourceUsed#getRessources()
+	 * @see #getRessourceUsed()
+	 * @generated
+	 */
+	EReference getRessourceUsed_Ressources();
+
+	/**
+	 * Returns the meta object for the container reference '{@link simplepdl.RessourceUsed#getWorkdefinition <em>Workdefinition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Workdefinition</em>'.
+	 * @see simplepdl.RessourceUsed#getWorkdefinition()
+	 * @see #getRessourceUsed()
+	 * @generated
+	 */
+	EReference getRessourceUsed_Workdefinition();
 
 	/**
 	 * Returns the meta object for enum '{@link simplepdl.WorkSequenceType <em>Work Sequence Type</em>}'.
@@ -694,30 +714,14 @@ public interface SimplepdlPackage extends EPackage {
 		EReference PROCESS__PROCESS_ELEMENTS = eINSTANCE.getProcess_ProcessElements();
 
 		/**
-		 * The meta object literal for the '{@link simplepdl.impl.RessourceNeededImpl <em>Ressource Needed</em>}' class.
+		 * The meta object literal for the '{@link simplepdl.impl.ProcessElementImpl <em>Process Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simplepdl.impl.RessourceNeededImpl
-		 * @see simplepdl.impl.SimplepdlPackageImpl#getRessourceNeeded()
+		 * @see simplepdl.impl.ProcessElementImpl
+		 * @see simplepdl.impl.SimplepdlPackageImpl#getProcessElement()
 		 * @generated
 		 */
-		EClass RESSOURCE_NEEDED = eINSTANCE.getRessourceNeeded();
-
-		/**
-		 * The meta object literal for the '<em><b>Quantity Needed</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESSOURCE_NEEDED__QUANTITY_NEEDED = eINSTANCE.getRessourceNeeded_QuantityNeeded();
-
-		/**
-		 * The meta object literal for the '<em><b>Ressource</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESSOURCE_NEEDED__RESSOURCE = eINSTANCE.getRessourceNeeded_Ressource();
+		EClass PROCESS_ELEMENT = eINSTANCE.getProcessElement();
 
 		/**
 		 * The meta object literal for the '{@link simplepdl.impl.WorkDefinitionImpl <em>Work Definition</em>}' class.
@@ -754,12 +758,12 @@ public interface SimplepdlPackage extends EPackage {
 		EAttribute WORK_DEFINITION__NAME = eINSTANCE.getWorkDefinition_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Quantity</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Ressources Used</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORK_DEFINITION__QUANTITY = eINSTANCE.getWorkDefinition_Quantity();
+		EReference WORK_DEFINITION__RESSOURCES_USED = eINSTANCE.getWorkDefinition_RessourcesUsed();
 
 		/**
 		 * The meta object literal for the '{@link simplepdl.impl.WorkSequenceImpl <em>Work Sequence</em>}' class.
@@ -796,42 +800,6 @@ public interface SimplepdlPackage extends EPackage {
 		EReference WORK_SEQUENCE__SUCCESSOR = eINSTANCE.getWorkSequence_Successor();
 
 		/**
-		 * The meta object literal for the '{@link simplepdl.impl.ProcessElementImpl <em>Process Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see simplepdl.impl.ProcessElementImpl
-		 * @see simplepdl.impl.SimplepdlPackageImpl#getProcessElement()
-		 * @generated
-		 */
-		EClass PROCESS_ELEMENT = eINSTANCE.getProcessElement();
-
-		/**
-		 * The meta object literal for the '{@link simplepdl.impl.RessourceTypeImpl <em>Ressource Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see simplepdl.impl.RessourceTypeImpl
-		 * @see simplepdl.impl.SimplepdlPackageImpl#getRessourceType()
-		 * @generated
-		 */
-		EClass RESSOURCE_TYPE = eINSTANCE.getRessourceType();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESSOURCE_TYPE__NAME = eINSTANCE.getRessourceType_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESSOURCE_TYPE__QUANTITY = eINSTANCE.getRessourceType_Quantity();
-
-		/**
 		 * The meta object literal for the '{@link simplepdl.impl.GuidanceImpl <em>Guidance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -842,6 +810,14 @@ public interface SimplepdlPackage extends EPackage {
 		EClass GUIDANCE = eINSTANCE.getGuidance();
 
 		/**
+		 * The meta object literal for the '<em><b>Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GUIDANCE__ELEMENTS = eINSTANCE.getGuidance_Elements();
+
+		/**
 		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -850,12 +826,64 @@ public interface SimplepdlPackage extends EPackage {
 		EAttribute GUIDANCE__TEXT = eINSTANCE.getGuidance_Text();
 
 		/**
-		 * The meta object literal for the '<em><b>Element</b></em>' reference list feature.
+		 * The meta object literal for the '{@link simplepdl.impl.RessourceImpl <em>Ressource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see simplepdl.impl.RessourceImpl
+		 * @see simplepdl.impl.SimplepdlPackageImpl#getRessource()
+		 * @generated
+		 */
+		EClass RESSOURCE = eINSTANCE.getRessource();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GUIDANCE__ELEMENT = eINSTANCE.getGuidance_Element();
+		EAttribute RESSOURCE__NAME = eINSTANCE.getRessource_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESSOURCE__QUANTITY = eINSTANCE.getRessource_Quantity();
+
+		/**
+		 * The meta object literal for the '{@link simplepdl.impl.RessourceUsedImpl <em>Ressource Used</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see simplepdl.impl.RessourceUsedImpl
+		 * @see simplepdl.impl.SimplepdlPackageImpl#getRessourceUsed()
+		 * @generated
+		 */
+		EClass RESSOURCE_USED = eINSTANCE.getRessourceUsed();
+
+		/**
+		 * The meta object literal for the '<em><b>Occ</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESSOURCE_USED__OCC = eINSTANCE.getRessourceUsed_Occ();
+
+		/**
+		 * The meta object literal for the '<em><b>Ressources</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESSOURCE_USED__RESSOURCES = eINSTANCE.getRessourceUsed_Ressources();
+
+		/**
+		 * The meta object literal for the '<em><b>Workdefinition</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESSOURCE_USED__WORKDEFINITION = eINSTANCE.getRessourceUsed_Workdefinition();
 
 		/**
 		 * The meta object literal for the '{@link simplepdl.WorkSequenceType <em>Work Sequence Type</em>}' enum.

@@ -15,9 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link petrinet.Arc#getWeight <em>Weight</em>}</li>
  *   <li>{@link petrinet.Arc#getKind <em>Kind</em>}</li>
- *   <li>{@link petrinet.Arc#getPlace <em>Place</em>}</li>
- *   <li>{@link petrinet.Arc#getTransition <em>Transition</em>}</li>
+ *   <li>{@link petrinet.Arc#getSource <em>Source</em>}</li>
+ *   <li>{@link petrinet.Arc#getTarget <em>Target</em>}</li>
  *   <li>{@link petrinet.Arc#getDirection <em>Direction</em>}</li>
+ *   <li>{@link petrinet.Arc#getPetri <em>Petri</em>}</li>
  * </ul>
  *
  * @see petrinet.PetrinetPackage#getArc()
@@ -73,52 +74,48 @@ public interface Arc extends EObject {
 	void setKind(ArcKind value);
 
 	/**
-	 * Returns the value of the '<em><b>Place</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link petrinet.Place#getArcs <em>Arcs</em>}'.
+	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Place</em>' reference.
-	 * @see #setPlace(Place)
-	 * @see petrinet.PetrinetPackage#getArc_Place()
-	 * @see petrinet.Place#getArcs
-	 * @model opposite="arcs"
+	 * @return the value of the '<em>Source</em>' reference.
+	 * @see #setSource(Node)
+	 * @see petrinet.PetrinetPackage#getArc_Source()
+	 * @model required="true"
 	 * @generated
 	 */
-	Place getPlace();
+	Node getSource();
 
 	/**
-	 * Sets the value of the '{@link petrinet.Arc#getPlace <em>Place</em>}' reference.
+	 * Sets the value of the '{@link petrinet.Arc#getSource <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Place</em>' reference.
-	 * @see #getPlace()
+	 * @param value the new value of the '<em>Source</em>' reference.
+	 * @see #getSource()
 	 * @generated
 	 */
-	void setPlace(Place value);
+	void setSource(Node value);
 
 	/**
-	 * Returns the value of the '<em><b>Transition</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link petrinet.Transition#getArcs <em>Arcs</em>}'.
+	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transition</em>' reference.
-	 * @see #setTransition(Transition)
-	 * @see petrinet.PetrinetPackage#getArc_Transition()
-	 * @see petrinet.Transition#getArcs
-	 * @model opposite="arcs"
+	 * @return the value of the '<em>Target</em>' reference.
+	 * @see #setTarget(Node)
+	 * @see petrinet.PetrinetPackage#getArc_Target()
+	 * @model required="true"
 	 * @generated
 	 */
-	Transition getTransition();
+	Node getTarget();
 
 	/**
-	 * Sets the value of the '{@link petrinet.Arc#getTransition <em>Transition</em>}' reference.
+	 * Sets the value of the '{@link petrinet.Arc#getTarget <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transition</em>' reference.
-	 * @see #getTransition()
+	 * @param value the new value of the '<em>Target</em>' reference.
+	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTransition(Transition value);
+	void setTarget(Node value);
 
 	/**
 	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
@@ -144,5 +141,27 @@ public interface Arc extends EObject {
 	 * @generated
 	 */
 	void setDirection(ArcDirection value);
+
+	/**
+	 * Returns the value of the '<em><b>Petri</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Petri</em>' reference.
+	 * @see #setPetri(PetriNet)
+	 * @see petrinet.PetrinetPackage#getArc_Petri()
+	 * @model required="true"
+	 * @generated
+	 */
+	PetriNet getPetri();
+
+	/**
+	 * Sets the value of the '{@link petrinet.Arc#getPetri <em>Petri</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Petri</em>' reference.
+	 * @see #getPetri()
+	 * @generated
+	 */
+	void setPetri(PetriNet value);
 
 } // Arc

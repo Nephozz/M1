@@ -1,0 +1,10 @@
+net ProducteurConsommateur
+			pl attente (1)
+			pl production (0)
+			pl tampon (0)
+			pl travail (0)
+			pl disponible (1)
+			tr produire attente -> production
+			tr livrer production -> attente tampon
+			tr recuperer tampon travail -> disponible
+			tr utiliser disponible -> travail

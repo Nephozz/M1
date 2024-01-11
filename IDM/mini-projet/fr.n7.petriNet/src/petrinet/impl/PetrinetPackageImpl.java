@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import petrinet.Arc;
 import petrinet.ArcDirection;
 import petrinet.ArcKind;
+import petrinet.Node;
 import petrinet.PetriNet;
 import petrinet.PetrinetFactory;
 import petrinet.PetrinetPackage;
@@ -59,7 +60,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum arcDirectionEEnum = null;
+	private EClass nodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,6 +68,13 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * @generated
 	 */
 	private EEnum arcKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum arcDirectionEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -143,8 +151,8 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPetriNet_Places() {
-		return (EReference)petriNetEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPetriNet_Name() {
+		return (EAttribute)petriNetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -152,7 +160,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPetriNet_Transitions() {
+	public EReference getPetriNet_Nodes() {
 		return (EReference)petriNetEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -163,15 +171,6 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 */
 	public EReference getPetriNet_Arcs() {
 		return (EReference)petriNetEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPetriNet_Name() {
-		return (EAttribute)petriNetEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -197,44 +196,8 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPlace_Arcs() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPlace_Name() {
-		return (EAttribute)placeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTransition() {
 		return transitionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTransition_Arcs() {
-		return (EReference)transitionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransition_Name() {
-		return (EAttribute)transitionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -269,7 +232,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getArc_Place() {
+	public EReference getArc_Source() {
 		return (EReference)arcEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -278,7 +241,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getArc_Transition() {
+	public EReference getArc_Target() {
 		return (EReference)arcEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -296,8 +259,35 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getArcDirection() {
-		return arcDirectionEEnum;
+	public EReference getArc_Petri() {
+		return (EReference)arcEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNode() {
+		return nodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNode_Name() {
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNode_Petri() {
+		return (EReference)nodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -307,6 +297,15 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 */
 	public EEnum getArcKind() {
 		return arcKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getArcDirection() {
+		return arcDirectionEEnum;
 	}
 
 	/**
@@ -338,30 +337,30 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 
 		// Create classes and their features
 		petriNetEClass = createEClass(PETRI_NET);
-		createEReference(petriNetEClass, PETRI_NET__PLACES);
-		createEReference(petriNetEClass, PETRI_NET__TRANSITIONS);
-		createEReference(petriNetEClass, PETRI_NET__ARCS);
 		createEAttribute(petriNetEClass, PETRI_NET__NAME);
+		createEReference(petriNetEClass, PETRI_NET__NODES);
+		createEReference(petriNetEClass, PETRI_NET__ARCS);
 
 		placeEClass = createEClass(PLACE);
 		createEAttribute(placeEClass, PLACE__JETON);
-		createEReference(placeEClass, PLACE__ARCS);
-		createEAttribute(placeEClass, PLACE__NAME);
 
 		transitionEClass = createEClass(TRANSITION);
-		createEReference(transitionEClass, TRANSITION__ARCS);
-		createEAttribute(transitionEClass, TRANSITION__NAME);
 
 		arcEClass = createEClass(ARC);
 		createEAttribute(arcEClass, ARC__WEIGHT);
 		createEAttribute(arcEClass, ARC__KIND);
-		createEReference(arcEClass, ARC__PLACE);
-		createEReference(arcEClass, ARC__TRANSITION);
+		createEReference(arcEClass, ARC__SOURCE);
+		createEReference(arcEClass, ARC__TARGET);
 		createEAttribute(arcEClass, ARC__DIRECTION);
+		createEReference(arcEClass, ARC__PETRI);
+
+		nodeEClass = createEClass(NODE);
+		createEAttribute(nodeEClass, NODE__NAME);
+		createEReference(nodeEClass, NODE__PETRI);
 
 		// Create enums
-		arcDirectionEEnum = createEEnum(ARC_DIRECTION);
 		arcKindEEnum = createEEnum(ARC_KIND);
+		arcDirectionEEnum = createEEnum(ARC_DIRECTION);
 	}
 
 	/**
@@ -392,38 +391,40 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		placeEClass.getESuperTypes().add(this.getNode());
+		transitionEClass.getESuperTypes().add(this.getNode());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(petriNetEClass, PetriNet.class, "PetriNet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPetriNet_Places(), this.getPlace(), null, "places", null, 0, -1, PetriNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPetriNet_Transitions(), this.getTransition(), null, "transitions", null, 0, -1, PetriNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPetriNet_Arcs(), this.getArc(), null, "arcs", null, 0, -1, PetriNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPetriNet_Name(), ecorePackage.getEString(), "name", null, 1, 1, PetriNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPetriNet_Nodes(), this.getNode(), null, "nodes", null, 0, -1, PetriNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPetriNet_Arcs(), this.getArc(), null, "arcs", null, 0, -1, PetriNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPlace_Jeton(), ecorePackage.getEInt(), "jeton", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlace_Arcs(), this.getArc(), this.getArc_Place(), "arcs", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlace_Name(), ecorePackage.getEString(), "name", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransition_Arcs(), this.getArc(), this.getArc_Transition(), "arcs", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransition_Name(), ecorePackage.getEString(), "name", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arcEClass, Arc.class, "Arc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getArc_Weight(), ecorePackage.getEInt(), "weight", null, 1, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getArc_Kind(), this.getArcKind(), "kind", null, 1, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getArc_Place(), this.getPlace(), this.getPlace_Arcs(), "place", null, 0, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getArc_Transition(), this.getTransition(), this.getTransition_Arcs(), "transition", null, 0, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArc_Source(), this.getNode(), null, "source", null, 1, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArc_Target(), this.getNode(), null, "target", null, 1, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getArc_Direction(), this.getArcDirection(), "direction", null, 1, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArc_Petri(), this.getPetriNet(), null, "petri", null, 1, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNode_Name(), ecorePackage.getEString(), "name", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_Petri(), this.getPetriNet(), null, "petri", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(arcDirectionEEnum, ArcDirection.class, "ArcDirection");
-		addEEnumLiteral(arcDirectionEEnum, ArcDirection.P2T);
-		addEEnumLiteral(arcDirectionEEnum, ArcDirection.T2P);
-
 		initEEnum(arcKindEEnum, ArcKind.class, "ArcKind");
 		addEEnumLiteral(arcKindEEnum, ArcKind.NORMAL);
 		addEEnumLiteral(arcKindEEnum, ArcKind.READ);
+
+		initEEnum(arcDirectionEEnum, ArcDirection.class, "ArcDirection");
+		addEEnumLiteral(arcDirectionEEnum, ArcDirection.PLACE_TO_TRANSITION);
+		addEEnumLiteral(arcDirectionEEnum, ArcDirection.TRANSITION_TO_PLACE);
 
 		// Create resource
 		createResource(eNS_URI);

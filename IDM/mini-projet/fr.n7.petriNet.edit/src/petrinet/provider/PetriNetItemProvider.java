@@ -102,8 +102,7 @@ public class PetriNetItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(PetrinetPackage.Literals.PETRI_NET__PLACES);
-			childrenFeatures.add(PetrinetPackage.Literals.PETRI_NET__TRANSITIONS);
+			childrenFeatures.add(PetrinetPackage.Literals.PETRI_NET__NODES);
 			childrenFeatures.add(PetrinetPackage.Literals.PETRI_NET__ARCS);
 		}
 		return childrenFeatures;
@@ -163,8 +162,7 @@ public class PetriNetItemProvider
 			case PetrinetPackage.PETRI_NET__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case PetrinetPackage.PETRI_NET__PLACES:
-			case PetrinetPackage.PETRI_NET__TRANSITIONS:
+			case PetrinetPackage.PETRI_NET__NODES:
 			case PetrinetPackage.PETRI_NET__ARCS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -185,12 +183,17 @@ public class PetriNetItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(PetrinetPackage.Literals.PETRI_NET__PLACES,
+				(PetrinetPackage.Literals.PETRI_NET__NODES,
+				 PetrinetFactory.eINSTANCE.createNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(PetrinetPackage.Literals.PETRI_NET__NODES,
 				 PetrinetFactory.eINSTANCE.createPlace()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(PetrinetPackage.Literals.PETRI_NET__TRANSITIONS,
+				(PetrinetPackage.Literals.PETRI_NET__NODES,
 				 PetrinetFactory.eINSTANCE.createTransition()));
 
 		newChildDescriptors.add

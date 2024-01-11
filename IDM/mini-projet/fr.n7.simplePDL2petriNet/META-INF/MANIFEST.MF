@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SimplePDL2petriNet
+Bundle-SymbolicName: fr.n7.simplePDL2petriNet
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: fr.n7.simplePDL2petriNet
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.eclipse.emf.ecore.xmi,
+ fr.n7.simplePDL;bundle-version="1.0.0",
+ fr.n7.petriNet;bundle-version="1.0.0"

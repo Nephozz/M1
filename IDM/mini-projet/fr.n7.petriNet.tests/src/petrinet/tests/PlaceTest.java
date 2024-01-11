@@ -2,8 +2,6 @@
  */
 package petrinet.tests;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import petrinet.PetrinetFactory;
@@ -15,15 +13,7 @@ import petrinet.Place;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PlaceTest extends TestCase {
-
-	/**
-	 * The fixture for this Place test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Place fixture = null;
+public class PlaceTest extends NodeTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -45,23 +35,14 @@ public class PlaceTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Place test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(Place fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this Place test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Place getFixture() {
-		return fixture;
+		return (Place)fixture;
 	}
 
 	/**

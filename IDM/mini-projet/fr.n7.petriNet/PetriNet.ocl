@@ -1,0 +1,30 @@
+import 'PetriNet.ecore'
+
+package petrinet
+
+context PetriNet
+--
+-- verify the 'name' property of all 'petrinet::PetriNet' instances is non-null
+--
+inv NonNull_name('The \'name\' property of "' + self.toString() + '" is null'):
+	name <> null
+
+-- OCL Node
+context Node
+inv validName('Invalid name: ' + self.name):
+	self.name.size() >= 2 and self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+-- Les noeuds ont tous un nom différent.
+inv nodesHaveDifferentNames: 
+	self.PetriNet.nodes -> forAll(n|self = n or self.name <> n.name)
+-- OCL Arc
+context Arc
+-- Deux places ne peuvent pas être reliées entre elles, ni deux transitions.
+inv validArc('Invalid arc !'):
+	if self.direction = petrinet::ArcDirection::placeToTransition then
+		self.target.oclIsTypeOf(Transition) and self.source.oclIsTypeOf(Place)
+	else
+		self.target.oclIsTypeOf(Place) and self.source.oclIsTypeOf(Transition)
+	endif
+inv validWeight('Weight < 1 !'):
+	self.weight >= 1
+endpackage

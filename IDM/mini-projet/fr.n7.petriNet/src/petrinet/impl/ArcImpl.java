@@ -3,7 +3,6 @@
 package petrinet.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -14,9 +13,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import petrinet.Arc;
 import petrinet.ArcDirection;
 import petrinet.ArcKind;
+import petrinet.Node;
+import petrinet.PetriNet;
 import petrinet.PetrinetPackage;
-import petrinet.Place;
-import petrinet.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,9 +27,10 @@ import petrinet.Transition;
  * <ul>
  *   <li>{@link petrinet.impl.ArcImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link petrinet.impl.ArcImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link petrinet.impl.ArcImpl#getPlace <em>Place</em>}</li>
- *   <li>{@link petrinet.impl.ArcImpl#getTransition <em>Transition</em>}</li>
+ *   <li>{@link petrinet.impl.ArcImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link petrinet.impl.ArcImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link petrinet.impl.ArcImpl#getDirection <em>Direction</em>}</li>
+ *   <li>{@link petrinet.impl.ArcImpl#getPetri <em>Petri</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,24 +77,24 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	protected ArcKind kind = KIND_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPlace() <em>Place</em>}' reference.
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPlace()
+	 * @see #getSource()
 	 * @generated
 	 * @ordered
 	 */
-	protected Place place;
+	protected Node source;
 
 	/**
-	 * The cached value of the '{@link #getTransition() <em>Transition</em>}' reference.
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTransition()
+	 * @see #getTarget()
 	 * @generated
 	 * @ordered
 	 */
-	protected Transition transition;
+	protected Node target;
 
 	/**
 	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
@@ -104,7 +104,7 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ArcDirection DIRECTION_EDEFAULT = ArcDirection.P2T;
+	protected static final ArcDirection DIRECTION_EDEFAULT = ArcDirection.PLACE_TO_TRANSITION;
 
 	/**
 	 * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
@@ -115,6 +115,16 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * @ordered
 	 */
 	protected ArcDirection direction = DIRECTION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getPetri() <em>Petri</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPetri()
+	 * @generated
+	 * @ordered
+	 */
+	protected PetriNet petri;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -182,16 +192,16 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Place getPlace() {
-		if (place != null && place.eIsProxy()) {
-			InternalEObject oldPlace = (InternalEObject)place;
-			place = (Place)eResolveProxy(oldPlace);
-			if (place != oldPlace) {
+	public Node getSource() {
+		if (source != null && source.eIsProxy()) {
+			InternalEObject oldSource = (InternalEObject)source;
+			source = (Node)eResolveProxy(oldSource);
+			if (source != oldSource) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PetrinetPackage.ARC__PLACE, oldPlace, place));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PetrinetPackage.ARC__SOURCE, oldSource, source));
 			}
 		}
-		return place;
+		return source;
 	}
 
 	/**
@@ -199,8 +209,8 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Place basicGetPlace() {
-		return place;
+	public Node basicGetSource() {
+		return source;
 	}
 
 	/**
@@ -208,14 +218,11 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPlace(Place newPlace, NotificationChain msgs) {
-		Place oldPlace = place;
-		place = newPlace;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__PLACE, oldPlace, newPlace);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public void setSource(Node newSource) {
+		Node oldSource = source;
+		source = newSource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -223,35 +230,16 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPlace(Place newPlace) {
-		if (newPlace != place) {
-			NotificationChain msgs = null;
-			if (place != null)
-				msgs = ((InternalEObject)place).eInverseRemove(this, PetrinetPackage.PLACE__ARCS, Place.class, msgs);
-			if (newPlace != null)
-				msgs = ((InternalEObject)newPlace).eInverseAdd(this, PetrinetPackage.PLACE__ARCS, Place.class, msgs);
-			msgs = basicSetPlace(newPlace, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__PLACE, newPlace, newPlace));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Transition getTransition() {
-		if (transition != null && transition.eIsProxy()) {
-			InternalEObject oldTransition = (InternalEObject)transition;
-			transition = (Transition)eResolveProxy(oldTransition);
-			if (transition != oldTransition) {
+	public Node getTarget() {
+		if (target != null && target.eIsProxy()) {
+			InternalEObject oldTarget = (InternalEObject)target;
+			target = (Node)eResolveProxy(oldTarget);
+			if (target != oldTarget) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PetrinetPackage.ARC__TRANSITION, oldTransition, transition));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PetrinetPackage.ARC__TARGET, oldTarget, target));
 			}
 		}
-		return transition;
+		return target;
 	}
 
 	/**
@@ -259,8 +247,8 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transition basicGetTransition() {
-		return transition;
+	public Node basicGetTarget() {
+		return target;
 	}
 
 	/**
@@ -268,33 +256,11 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTransition(Transition newTransition, NotificationChain msgs) {
-		Transition oldTransition = transition;
-		transition = newTransition;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__TRANSITION, oldTransition, newTransition);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTransition(Transition newTransition) {
-		if (newTransition != transition) {
-			NotificationChain msgs = null;
-			if (transition != null)
-				msgs = ((InternalEObject)transition).eInverseRemove(this, PetrinetPackage.TRANSITION__ARCS, Transition.class, msgs);
-			if (newTransition != null)
-				msgs = ((InternalEObject)newTransition).eInverseAdd(this, PetrinetPackage.TRANSITION__ARCS, Transition.class, msgs);
-			msgs = basicSetTransition(newTransition, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__TRANSITION, newTransition, newTransition));
+	public void setTarget(Node newTarget) {
+		Node oldTarget = target;
+		target = newTarget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__TARGET, oldTarget, target));
 	}
 
 	/**
@@ -323,19 +289,16 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PetrinetPackage.ARC__PLACE:
-				if (place != null)
-					msgs = ((InternalEObject)place).eInverseRemove(this, PetrinetPackage.PLACE__ARCS, Place.class, msgs);
-				return basicSetPlace((Place)otherEnd, msgs);
-			case PetrinetPackage.ARC__TRANSITION:
-				if (transition != null)
-					msgs = ((InternalEObject)transition).eInverseRemove(this, PetrinetPackage.TRANSITION__ARCS, Transition.class, msgs);
-				return basicSetTransition((Transition)otherEnd, msgs);
+	public PetriNet getPetri() {
+		if (petri != null && petri.eIsProxy()) {
+			InternalEObject oldPetri = (InternalEObject)petri;
+			petri = (PetriNet)eResolveProxy(oldPetri);
+			if (petri != oldPetri) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PetrinetPackage.ARC__PETRI, oldPetri, petri));
+			}
 		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return petri;
 	}
 
 	/**
@@ -343,15 +306,20 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PetrinetPackage.ARC__PLACE:
-				return basicSetPlace(null, msgs);
-			case PetrinetPackage.ARC__TRANSITION:
-				return basicSetTransition(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public PetriNet basicGetPetri() {
+		return petri;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPetri(PetriNet newPetri) {
+		PetriNet oldPetri = petri;
+		petri = newPetri;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.ARC__PETRI, oldPetri, petri));
 	}
 
 	/**
@@ -366,14 +334,17 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 				return getWeight();
 			case PetrinetPackage.ARC__KIND:
 				return getKind();
-			case PetrinetPackage.ARC__PLACE:
-				if (resolve) return getPlace();
-				return basicGetPlace();
-			case PetrinetPackage.ARC__TRANSITION:
-				if (resolve) return getTransition();
-				return basicGetTransition();
+			case PetrinetPackage.ARC__SOURCE:
+				if (resolve) return getSource();
+				return basicGetSource();
+			case PetrinetPackage.ARC__TARGET:
+				if (resolve) return getTarget();
+				return basicGetTarget();
 			case PetrinetPackage.ARC__DIRECTION:
 				return getDirection();
+			case PetrinetPackage.ARC__PETRI:
+				if (resolve) return getPetri();
+				return basicGetPetri();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -392,14 +363,17 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 			case PetrinetPackage.ARC__KIND:
 				setKind((ArcKind)newValue);
 				return;
-			case PetrinetPackage.ARC__PLACE:
-				setPlace((Place)newValue);
+			case PetrinetPackage.ARC__SOURCE:
+				setSource((Node)newValue);
 				return;
-			case PetrinetPackage.ARC__TRANSITION:
-				setTransition((Transition)newValue);
+			case PetrinetPackage.ARC__TARGET:
+				setTarget((Node)newValue);
 				return;
 			case PetrinetPackage.ARC__DIRECTION:
 				setDirection((ArcDirection)newValue);
+				return;
+			case PetrinetPackage.ARC__PETRI:
+				setPetri((PetriNet)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -419,14 +393,17 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 			case PetrinetPackage.ARC__KIND:
 				setKind(KIND_EDEFAULT);
 				return;
-			case PetrinetPackage.ARC__PLACE:
-				setPlace((Place)null);
+			case PetrinetPackage.ARC__SOURCE:
+				setSource((Node)null);
 				return;
-			case PetrinetPackage.ARC__TRANSITION:
-				setTransition((Transition)null);
+			case PetrinetPackage.ARC__TARGET:
+				setTarget((Node)null);
 				return;
 			case PetrinetPackage.ARC__DIRECTION:
 				setDirection(DIRECTION_EDEFAULT);
+				return;
+			case PetrinetPackage.ARC__PETRI:
+				setPetri((PetriNet)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -444,12 +421,14 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 				return weight != WEIGHT_EDEFAULT;
 			case PetrinetPackage.ARC__KIND:
 				return kind != KIND_EDEFAULT;
-			case PetrinetPackage.ARC__PLACE:
-				return place != null;
-			case PetrinetPackage.ARC__TRANSITION:
-				return transition != null;
+			case PetrinetPackage.ARC__SOURCE:
+				return source != null;
+			case PetrinetPackage.ARC__TARGET:
+				return target != null;
 			case PetrinetPackage.ARC__DIRECTION:
 				return direction != DIRECTION_EDEFAULT;
+			case PetrinetPackage.ARC__PETRI:
+				return petri != null;
 		}
 		return super.eIsSet(featureID);
 	}

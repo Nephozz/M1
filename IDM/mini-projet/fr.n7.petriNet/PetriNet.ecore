@@ -2,42 +2,40 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="petrinet" nsURI="http://petrinet" nsPrefix="petrinet">
   <eClassifiers xsi:type="ecore:EClass" name="PetriNet">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="places" upperBound="-1"
-        eType="#//Place" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
-        eType="#//Transition" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arcs" upperBound="-1" eType="#//Arc"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//Node" containment="true" eOpposite="#//Node/petri"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arcs" upperBound="-1" eType="#//Arc"
+        containment="true" eOpposite="#//Arc/petri"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Place">
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//Node">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="jeton" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arcs" upperBound="-1" eType="#//Arc"
-        eOpposite="#//Arc/place"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arcs" upperBound="-1" eType="#//Arc"
-        eOpposite="#//Arc/transition"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="Arc">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" lowerBound="1" eType="#//ArcKind"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="place" eType="#//Place"
-        eOpposite="#//Place/arcs"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" eType="#//Transition"
-        eOpposite="#//Transition/arcs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" lowerBound="1"
         eType="#//ArcDirection"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ArcDirection">
-    <eLiterals name="P2T"/>
-    <eLiterals name="T2P" value="1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="petri" lowerBound="1" eType="#//PetriNet"
+        eOpposite="#//PetriNet/arcs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ArcKind">
-    <eLiterals name="NORMAL"/>
-    <eLiterals name="READ" value="1"/>
+    <eLiterals name="normal"/>
+    <eLiterals name="read" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ArcDirection">
+    <eLiterals name="placeToTransition"/>
+    <eLiterals name="transitionToPlace" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="petri" lowerBound="1" eType="#//PetriNet"
+        eOpposite="#//PetriNet/nodes"/>
   </eClassifiers>
 </ecore:EPackage>

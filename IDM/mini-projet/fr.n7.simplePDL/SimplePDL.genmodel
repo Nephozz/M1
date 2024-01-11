@@ -16,29 +16,30 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Process/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//Process/processElements"/>
     </genClasses>
-    <genClasses ecoreClass="SimplePDL.ecore#//RessourceNeeded">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//RessourceNeeded/quantityNeeded"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//RessourceNeeded/ressource"/>
-    </genClasses>
+    <genClasses image="false" ecoreClass="SimplePDL.ecore#//ProcessElement"/>
     <genClasses ecoreClass="SimplePDL.ecore#//WorkDefinition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//WorkDefinition/linksToPredecessors"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//WorkDefinition/linksToSuccessors"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//WorkDefinition/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//WorkDefinition/quantity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//WorkDefinition/ressourcesUsed"/>
     </genClasses>
     <genClasses ecoreClass="SimplePDL.ecore#//WorkSequence">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//WorkSequence/linkType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//WorkSequence/predecessor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//WorkSequence/successor"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="SimplePDL.ecore#//ProcessElement"/>
-    <genClasses ecoreClass="SimplePDL.ecore#//RessourceType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//RessourceType/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//RessourceType/quantity"/>
-    </genClasses>
     <genClasses ecoreClass="SimplePDL.ecore#//Guidance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//Guidance/elements"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Guidance/text"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//Guidance/element"/>
+    </genClasses>
+    <genClasses ecoreClass="SimplePDL.ecore#//Ressource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Ressource/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Ressource/quantity"/>
+    </genClasses>
+    <genClasses ecoreClass="SimplePDL.ecore#//RessourceUsed">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//RessourceUsed/occ"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//RessourceUsed/ressources"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SimplePDL.ecore#//RessourceUsed/workdefinition"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

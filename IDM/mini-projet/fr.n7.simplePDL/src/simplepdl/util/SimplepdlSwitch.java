@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import simplepdl.Guidance;
 import simplepdl.ProcessElement;
-import simplepdl.RessourceNeeded;
-import simplepdl.RessourceType;
+import simplepdl.Ressource;
+import simplepdl.RessourceUsed;
 import simplepdl.SimplepdlPackage;
 import simplepdl.WorkDefinition;
 import simplepdl.WorkSequence;
@@ -78,9 +78,9 @@ public class SimplepdlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimplepdlPackage.RESSOURCE_NEEDED: {
-				RessourceNeeded ressourceNeeded = (RessourceNeeded)theEObject;
-				T result = caseRessourceNeeded(ressourceNeeded);
+			case SimplepdlPackage.PROCESS_ELEMENT: {
+				ProcessElement processElement = (ProcessElement)theEObject;
+				T result = caseProcessElement(processElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -98,23 +98,23 @@ public class SimplepdlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimplepdlPackage.PROCESS_ELEMENT: {
-				ProcessElement processElement = (ProcessElement)theEObject;
-				T result = caseProcessElement(processElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case SimplepdlPackage.RESSOURCE_TYPE: {
-				RessourceType ressourceType = (RessourceType)theEObject;
-				T result = caseRessourceType(ressourceType);
-				if (result == null) result = caseProcessElement(ressourceType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case SimplepdlPackage.GUIDANCE: {
 				Guidance guidance = (Guidance)theEObject;
 				T result = caseGuidance(guidance);
 				if (result == null) result = caseProcessElement(guidance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimplepdlPackage.RESSOURCE: {
+				Ressource ressource = (Ressource)theEObject;
+				T result = caseRessource(ressource);
+				if (result == null) result = caseProcessElement(ressource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimplepdlPackage.RESSOURCE_USED: {
+				RessourceUsed ressourceUsed = (RessourceUsed)theEObject;
+				T result = caseRessourceUsed(ressourceUsed);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -138,17 +138,17 @@ public class SimplepdlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Ressource Needed</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Process Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Ressource Needed</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Process Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRessourceNeeded(RessourceNeeded object) {
+	public T caseProcessElement(ProcessElement object) {
 		return null;
 	}
 
@@ -183,36 +183,6 @@ public class SimplepdlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Process Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Process Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProcessElement(ProcessElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Ressource Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Ressource Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRessourceType(RessourceType object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Guidance</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -224,6 +194,36 @@ public class SimplepdlSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGuidance(Guidance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ressource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ressource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRessource(Ressource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ressource Used</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ressource Used</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRessourceUsed(RessourceUsed object) {
 		return null;
 	}
 

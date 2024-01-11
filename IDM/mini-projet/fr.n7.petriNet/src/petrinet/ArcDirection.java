@@ -19,46 +19,46 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ArcDirection implements Enumerator {
 	/**
-	 * The '<em><b>P2T</b></em>' literal object.
+	 * The '<em><b>Place To Transition</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #P2T_VALUE
+	 * @see #PLACE_TO_TRANSITION_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	P2T(0, "P2T", "P2T"),
+	PLACE_TO_TRANSITION(0, "placeToTransition", "placeToTransition"),
 
 	/**
-	 * The '<em><b>T2P</b></em>' literal object.
+	 * The '<em><b>Transition To Place</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #T2P_VALUE
+	 * @see #TRANSITION_TO_PLACE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	T2P(1, "T2P", "T2P");
+	TRANSITION_TO_PLACE(1, "transitionToPlace", "transitionToPlace");
 
 	/**
-	 * The '<em><b>P2T</b></em>' literal value.
+	 * The '<em><b>Place To Transition</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #P2T
-	 * @model
+	 * @see #PLACE_TO_TRANSITION
+	 * @model name="placeToTransition"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int P2T_VALUE = 0;
+	public static final int PLACE_TO_TRANSITION_VALUE = 0;
 
 	/**
-	 * The '<em><b>T2P</b></em>' literal value.
+	 * The '<em><b>Transition To Place</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #T2P
-	 * @model
+	 * @see #TRANSITION_TO_PLACE
+	 * @model name="transitionToPlace"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int T2P_VALUE = 1;
+	public static final int TRANSITION_TO_PLACE_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Arc Direction</b></em>' enumerators.
@@ -68,8 +68,8 @@ public enum ArcDirection implements Enumerator {
 	 */
 	private static final ArcDirection[] VALUES_ARRAY =
 		new ArcDirection[] {
-			P2T,
-			T2P,
+			PLACE_TO_TRANSITION,
+			TRANSITION_TO_PLACE,
 		};
 
 	/**
@@ -126,8 +126,8 @@ public enum ArcDirection implements Enumerator {
 	 */
 	public static ArcDirection get(int value) {
 		switch (value) {
-			case P2T_VALUE: return P2T;
-			case T2P_VALUE: return T2P;
+			case PLACE_TO_TRANSITION_VALUE: return PLACE_TO_TRANSITION;
+			case TRANSITION_TO_PLACE_VALUE: return TRANSITION_TO_PLACE;
 		}
 		return null;
 	}

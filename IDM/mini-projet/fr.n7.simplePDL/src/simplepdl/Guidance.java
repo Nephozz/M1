@@ -13,8 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link simplepdl.Guidance#getElements <em>Elements</em>}</li>
  *   <li>{@link simplepdl.Guidance#getText <em>Text</em>}</li>
- *   <li>{@link simplepdl.Guidance#getElement <em>Element</em>}</li>
  * </ul>
  *
  * @see simplepdl.SimplepdlPackage#getGuidance()
@@ -22,6 +22,18 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Guidance extends ProcessElement {
+	/**
+	 * Returns the value of the '<em><b>Elements</b></em>' reference list.
+	 * The list contents are of type {@link simplepdl.ProcessElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Elements</em>' reference list.
+	 * @see simplepdl.SimplepdlPackage#getGuidance_Elements()
+	 * @model
+	 * @generated
+	 */
+	EList<ProcessElement> getElements();
+
 	/**
 	 * Returns the value of the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -43,17 +55,5 @@ public interface Guidance extends ProcessElement {
 	 * @generated
 	 */
 	void setText(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Element</b></em>' reference list.
-	 * The list contents are of type {@link simplepdl.ProcessElement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Element</em>' reference list.
-	 * @see simplepdl.SimplepdlPackage#getGuidance_Element()
-	 * @model
-	 * @generated
-	 */
-	EList<ProcessElement> getElement();
 
 } // Guidance

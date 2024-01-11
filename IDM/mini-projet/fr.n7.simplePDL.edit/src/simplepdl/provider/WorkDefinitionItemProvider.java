@@ -133,7 +133,7 @@ public class WorkDefinitionItemProvider extends ProcessElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(SimplepdlPackage.Literals.WORK_DEFINITION__QUANTITY);
+			childrenFeatures.add(SimplepdlPackage.Literals.WORK_DEFINITION__RESSOURCES_USED);
 		}
 		return childrenFeatures;
 	}
@@ -192,7 +192,7 @@ public class WorkDefinitionItemProvider extends ProcessElementItemProvider {
 			case SimplepdlPackage.WORK_DEFINITION__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case SimplepdlPackage.WORK_DEFINITION__QUANTITY:
+			case SimplepdlPackage.WORK_DEFINITION__RESSOURCES_USED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -212,8 +212,8 @@ public class WorkDefinitionItemProvider extends ProcessElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(SimplepdlPackage.Literals.WORK_DEFINITION__QUANTITY,
-				 SimplepdlFactory.eINSTANCE.createRessourceNeeded()));
+				(SimplepdlPackage.Literals.WORK_DEFINITION__RESSOURCES_USED,
+				 SimplepdlFactory.eINSTANCE.createRessourceUsed()));
 	}
 
 }

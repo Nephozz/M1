@@ -13,12 +13,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import simplepdl.RessourceNeeded;
+import simplepdl.RessourceUsed;
 import simplepdl.SimplepdlPackage;
 import simplepdl.WorkDefinition;
 import simplepdl.WorkSequence;
@@ -34,7 +33,7 @@ import simplepdl.WorkSequence;
  *   <li>{@link simplepdl.impl.WorkDefinitionImpl#getLinksToPredecessors <em>Links To Predecessors</em>}</li>
  *   <li>{@link simplepdl.impl.WorkDefinitionImpl#getLinksToSuccessors <em>Links To Successors</em>}</li>
  *   <li>{@link simplepdl.impl.WorkDefinitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link simplepdl.impl.WorkDefinitionImpl#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link simplepdl.impl.WorkDefinitionImpl#getRessourcesUsed <em>Ressources Used</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,14 +80,14 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getQuantity() <em>Quantity</em>}' containment reference list.
+	 * The cached value of the '{@link #getRessourcesUsed() <em>Ressources Used</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQuantity()
+	 * @see #getRessourcesUsed()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RessourceNeeded> quantity;
+	protected EList<RessourceUsed> ressourcesUsed;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,11 +158,11 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<RessourceNeeded> getQuantity() {
-		if (quantity == null) {
-			quantity = new EObjectContainmentEList<RessourceNeeded>(RessourceNeeded.class, this, SimplepdlPackage.WORK_DEFINITION__QUANTITY);
+	public EList<RessourceUsed> getRessourcesUsed() {
+		if (ressourcesUsed == null) {
+			ressourcesUsed = new EObjectContainmentWithInverseEList<RessourceUsed>(RessourceUsed.class, this, SimplepdlPackage.WORK_DEFINITION__RESSOURCES_USED, SimplepdlPackage.RESSOURCE_USED__WORKDEFINITION);
 		}
-		return quantity;
+		return ressourcesUsed;
 	}
 
 	/**
@@ -179,6 +178,8 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLinksToPredecessors()).basicAdd(otherEnd, msgs);
 			case SimplepdlPackage.WORK_DEFINITION__LINKS_TO_SUCCESSORS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLinksToSuccessors()).basicAdd(otherEnd, msgs);
+			case SimplepdlPackage.WORK_DEFINITION__RESSOURCES_USED:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRessourcesUsed()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -195,8 +196,8 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
 				return ((InternalEList<?>)getLinksToPredecessors()).basicRemove(otherEnd, msgs);
 			case SimplepdlPackage.WORK_DEFINITION__LINKS_TO_SUCCESSORS:
 				return ((InternalEList<?>)getLinksToSuccessors()).basicRemove(otherEnd, msgs);
-			case SimplepdlPackage.WORK_DEFINITION__QUANTITY:
-				return ((InternalEList<?>)getQuantity()).basicRemove(otherEnd, msgs);
+			case SimplepdlPackage.WORK_DEFINITION__RESSOURCES_USED:
+				return ((InternalEList<?>)getRessourcesUsed()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -215,8 +216,8 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
 				return getLinksToSuccessors();
 			case SimplepdlPackage.WORK_DEFINITION__NAME:
 				return getName();
-			case SimplepdlPackage.WORK_DEFINITION__QUANTITY:
-				return getQuantity();
+			case SimplepdlPackage.WORK_DEFINITION__RESSOURCES_USED:
+				return getRessourcesUsed();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -241,9 +242,9 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
 			case SimplepdlPackage.WORK_DEFINITION__NAME:
 				setName((String)newValue);
 				return;
-			case SimplepdlPackage.WORK_DEFINITION__QUANTITY:
-				getQuantity().clear();
-				getQuantity().addAll((Collection<? extends RessourceNeeded>)newValue);
+			case SimplepdlPackage.WORK_DEFINITION__RESSOURCES_USED:
+				getRessourcesUsed().clear();
+				getRessourcesUsed().addAll((Collection<? extends RessourceUsed>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -266,8 +267,8 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
 			case SimplepdlPackage.WORK_DEFINITION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case SimplepdlPackage.WORK_DEFINITION__QUANTITY:
-				getQuantity().clear();
+			case SimplepdlPackage.WORK_DEFINITION__RESSOURCES_USED:
+				getRessourcesUsed().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -287,8 +288,8 @@ public class WorkDefinitionImpl extends ProcessElementImpl implements WorkDefini
 				return linksToSuccessors != null && !linksToSuccessors.isEmpty();
 			case SimplepdlPackage.WORK_DEFINITION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case SimplepdlPackage.WORK_DEFINITION__QUANTITY:
-				return quantity != null && !quantity.isEmpty();
+			case SimplepdlPackage.WORK_DEFINITION__RESSOURCES_USED:
+				return ressourcesUsed != null && !ressourcesUsed.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

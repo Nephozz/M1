@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import simplepdl.Guidance;
-import simplepdl.RessourceNeeded;
-import simplepdl.RessourceType;
+import simplepdl.Ressource;
+import simplepdl.RessourceUsed;
 import simplepdl.SimplepdlFactory;
 import simplepdl.SimplepdlPackage;
 import simplepdl.WorkDefinition;
@@ -65,11 +65,11 @@ public class SimplepdlFactoryImpl extends EFactoryImpl implements SimplepdlFacto
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SimplepdlPackage.PROCESS: return createProcess();
-			case SimplepdlPackage.RESSOURCE_NEEDED: return createRessourceNeeded();
 			case SimplepdlPackage.WORK_DEFINITION: return createWorkDefinition();
 			case SimplepdlPackage.WORK_SEQUENCE: return createWorkSequence();
-			case SimplepdlPackage.RESSOURCE_TYPE: return createRessourceType();
 			case SimplepdlPackage.GUIDANCE: return createGuidance();
+			case SimplepdlPackage.RESSOURCE: return createRessource();
+			case SimplepdlPackage.RESSOURCE_USED: return createRessourceUsed();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -120,16 +120,6 @@ public class SimplepdlFactoryImpl extends EFactoryImpl implements SimplepdlFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RessourceNeeded createRessourceNeeded() {
-		RessourceNeededImpl ressourceNeeded = new RessourceNeededImpl();
-		return ressourceNeeded;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public WorkDefinition createWorkDefinition() {
 		WorkDefinitionImpl workDefinition = new WorkDefinitionImpl();
 		return workDefinition;
@@ -150,9 +140,9 @@ public class SimplepdlFactoryImpl extends EFactoryImpl implements SimplepdlFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RessourceType createRessourceType() {
-		RessourceTypeImpl ressourceType = new RessourceTypeImpl();
-		return ressourceType;
+	public Guidance createGuidance() {
+		GuidanceImpl guidance = new GuidanceImpl();
+		return guidance;
 	}
 
 	/**
@@ -160,9 +150,19 @@ public class SimplepdlFactoryImpl extends EFactoryImpl implements SimplepdlFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Guidance createGuidance() {
-		GuidanceImpl guidance = new GuidanceImpl();
-		return guidance;
+	public Ressource createRessource() {
+		RessourceImpl ressource = new RessourceImpl();
+		return ressource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RessourceUsed createRessourceUsed() {
+		RessourceUsedImpl ressourceUsed = new RessourceUsedImpl();
+		return ressourceUsed;
 	}
 
 	/**

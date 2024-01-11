@@ -1,0 +1,69 @@
+-- @path SimplePDL=/fr.n7.simplePDL/SimplePDL.ecore
+-- @path PetriNet=/fr.n7.petriNet/PetriNet.ecore
+
+module simplepdl2petrinet;
+create OUT : PetriNet from IN : SimplePDL;
+
+rule Process2PetriNet {
+	from process : SimplePDL!Process
+	to petri : PetriNet!PetriNet(name <- process.name)
+}
+
+helper context SimplePDL!ProcessElement
+def: getProcess() : SimplePDL!Process =
+	SimplePDL!Process.allInstances()
+					-> select(e | e.processElements->includes(self))
+					-> asSequence() -> first();
+
+
+rule WD2PetriNet {
+	from wd : SimplePDL!WorkDefinition
+	to place_not_started : PetriNet!Place(petri <- wd.getProcess(), name <- wd.name + '_NotStarted', jeton <- 1),
+	   transition_start : PetriNet!Transition(petri <- wd.getProcess(), name <- wd.name + '_start'),
+	   place_started : PetriNet!Place(petri <- wd.getProcess(), name <- wd.name + '_Started', jeton <- 0),
+	   place_running : PetriNet!Place(petri <- wd.getProcess(), name <- wd.name + '_Running', jeton <- 0),
+	   transition_finish : PetriNet!Transition(petri <- wd.getProcess(), name <- wd.name + '_finish'),
+	   place_finished : PetriNet!Place(petri <- wd.getProcess(), name <- wd.name + '_Finished', jeton <- 0),
+	   arc_not_started_start : PetriNet!Arc(petri <- wd.getProcess(), weight <- 1, kind <- #normal, direction <- #placeToTransition, source <- place_not_started, target <- transition_start),
+	   arc_start_started : PetriNet!Arc(petri <- wd.getProcess(), weight <- 1, kind <- #normal, direction <- #transitionToPlace, source <- transition_start, target <- place_started),
+	   arc_start_running : PetriNet!Arc(petri <- wd.getProcess(), weight <- 1, kind <- #normal, direction <- #transitionToPlace, source <- transition_start, target <- place_running),
+	   arc_running_finish : PetriNet!Arc(petri <- wd.getProcess(), weight <- 1, kind <- #normal, direction <- #placeToTransition, source <- place_running, target <- transition_finish),
+	   arc_finish_finished : PetriNet!Arc(petri <- wd.getProcess(), weight <- 1, kind <- #normal, direction <- #transitionToPlace, source <- transition_finish, target <- place_finished)
+}
+ 
+rule WS2ReadArc {
+	from ws : SimplePDL!WorkSequence
+	to read : PetriNet!Arc(
+		petri <- ws.getProcess(),
+		kind <- #read,
+		weight <- 1,
+		direction <- #placeToTransition,
+		source <-  thisModule.resolveTemp(ws.predecessor, 'place_' +
+			(if ws.linkType = #startToStart or ws.linkType = #startToFinish then
+				'started'
+			else
+				'finished'		
+			endif)),
+		target <- thisModule.resolveTemp(ws.successor, 'transition_' +
+			(if ws.linkType = #startToStart or ws.linkType = #finishToStart then
+				'start'
+			else
+				'finish'		
+			endif))
+		)
+}
+
+rule Ressource2Place {
+	from r : SimplePDL!Ressource
+	to place_r : PetriNet!Place(petri <- r.getProcess(), name <- r.name, jeton <- r.quantity)
+}
+
+rule RessourceUsed2Arc {
+	from r_used : SimplePDL!RessourceUsed
+	to arc_r_start : PetriNet!Arc(petri <- r_used.ressources.getProcess(), weight <- r_used.occ, kind <- #normal, direction <- #placeToTransition, 
+		source <- thisModule.resolveTemp(r_used.ressources, 'place_r'), 
+		target <- thisModule.resolveTemp(r_used.workdefinition, 'transition_start')),
+	   arc_finish_r : PetriNet!Arc(petri <- r_used.ressources.getProcess(), weight <- r_used.occ, kind <- #normal, direction <- #transitionToPlace, 
+		source <- thisModule.resolveTemp(r_used.workdefinition, 'transition_finish'), 
+		target <- thisModule.resolveTemp(r_used.ressources, 'place_r'))
+}

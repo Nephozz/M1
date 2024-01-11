@@ -191,12 +191,12 @@ public class ProcessItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SimplepdlPackage.Literals.PROCESS__PROCESS_ELEMENTS,
-				 SimplepdlFactory.eINSTANCE.createRessourceType()));
+				 SimplepdlFactory.eINSTANCE.createGuidance()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(SimplepdlPackage.Literals.PROCESS__PROCESS_ELEMENTS,
-				 SimplepdlFactory.eINSTANCE.createGuidance()));
+				 SimplepdlFactory.eINSTANCE.createRessource()));
 	}
 
 	/**

@@ -164,6 +164,29 @@ public class PetrinetItemProviderAdapterFactory extends PetrinetAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link petrinet.Node} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NodeItemProvider nodeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link petrinet.Node}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNodeAdapter() {
+		if (nodeItemProvider == null) {
+			nodeItemProvider = new NodeItemProvider(this);
+		}
+
+		return nodeItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +289,7 @@ public class PetrinetItemProviderAdapterFactory extends PetrinetAdapterFactory i
 		if (placeItemProvider != null) placeItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
 		if (arcItemProvider != null) arcItemProvider.dispose();
+		if (nodeItemProvider != null) nodeItemProvider.dispose();
 	}
 
 }

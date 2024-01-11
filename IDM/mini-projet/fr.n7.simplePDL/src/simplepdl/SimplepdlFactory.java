@@ -31,15 +31,6 @@ public interface SimplepdlFactory extends EFactory {
 	Process createProcess();
 
 	/**
-	 * Returns a new object of class '<em>Ressource Needed</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Ressource Needed</em>'.
-	 * @generated
-	 */
-	RessourceNeeded createRessourceNeeded();
-
-	/**
 	 * Returns a new object of class '<em>Work Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,15 +49,6 @@ public interface SimplepdlFactory extends EFactory {
 	WorkSequence createWorkSequence();
 
 	/**
-	 * Returns a new object of class '<em>Ressource Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Ressource Type</em>'.
-	 * @generated
-	 */
-	RessourceType createRessourceType();
-
-	/**
 	 * Returns a new object of class '<em>Guidance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,6 +56,24 @@ public interface SimplepdlFactory extends EFactory {
 	 * @generated
 	 */
 	Guidance createGuidance();
+
+	/**
+	 * Returns a new object of class '<em>Ressource</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ressource</em>'.
+	 * @generated
+	 */
+	Ressource createRessource();
+
+	/**
+	 * Returns a new object of class '<em>Ressource Used</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ressource Used</em>'.
+	 * @generated
+	 */
+	RessourceUsed createRessourceUsed();
 
 	/**
 	 * Returns the package supported by this factory.

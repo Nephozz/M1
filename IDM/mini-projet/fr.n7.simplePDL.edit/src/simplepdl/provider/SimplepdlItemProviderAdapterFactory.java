@@ -95,29 +95,6 @@ public class SimplepdlItemProviderAdapterFactory extends SimplepdlAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link simplepdl.RessourceNeeded} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RessourceNeededItemProvider ressourceNeededItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link simplepdl.RessourceNeeded}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRessourceNeededAdapter() {
-		if (ressourceNeededItemProvider == null) {
-			ressourceNeededItemProvider = new RessourceNeededItemProvider(this);
-		}
-
-		return ressourceNeededItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link simplepdl.WorkDefinition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -164,29 +141,6 @@ public class SimplepdlItemProviderAdapterFactory extends SimplepdlAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link simplepdl.RessourceType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RessourceTypeItemProvider ressourceTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link simplepdl.RessourceType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRessourceTypeAdapter() {
-		if (ressourceTypeItemProvider == null) {
-			ressourceTypeItemProvider = new RessourceTypeItemProvider(this);
-		}
-
-		return ressourceTypeItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link simplepdl.Guidance} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,6 +161,52 @@ public class SimplepdlItemProviderAdapterFactory extends SimplepdlAdapterFactory
 		}
 
 		return guidanceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link simplepdl.Ressource} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RessourceItemProvider ressourceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link simplepdl.Ressource}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRessourceAdapter() {
+		if (ressourceItemProvider == null) {
+			ressourceItemProvider = new RessourceItemProvider(this);
+		}
+
+		return ressourceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link simplepdl.RessourceUsed} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RessourceUsedItemProvider ressourceUsedItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link simplepdl.RessourceUsed}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRessourceUsedAdapter() {
+		if (ressourceUsedItemProvider == null) {
+			ressourceUsedItemProvider = new RessourceUsedItemProvider(this);
+		}
+
+		return ressourceUsedItemProvider;
 	}
 
 	/**
@@ -309,11 +309,11 @@ public class SimplepdlItemProviderAdapterFactory extends SimplepdlAdapterFactory
 	 */
 	public void dispose() {
 		if (processItemProvider != null) processItemProvider.dispose();
-		if (ressourceNeededItemProvider != null) ressourceNeededItemProvider.dispose();
 		if (workDefinitionItemProvider != null) workDefinitionItemProvider.dispose();
 		if (workSequenceItemProvider != null) workSequenceItemProvider.dispose();
-		if (ressourceTypeItemProvider != null) ressourceTypeItemProvider.dispose();
 		if (guidanceItemProvider != null) guidanceItemProvider.dispose();
+		if (ressourceItemProvider != null) ressourceItemProvider.dispose();
+		if (ressourceUsedItemProvider != null) ressourceUsedItemProvider.dispose();
 	}
 
 }

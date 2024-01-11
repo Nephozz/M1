@@ -75,18 +75,26 @@ public class PetrinetSwitch<T> extends Switch<T> {
 			case PetrinetPackage.PLACE: {
 				Place place = (Place)theEObject;
 				T result = casePlace(place);
+				if (result == null) result = caseNode(place);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PetrinetPackage.TRANSITION: {
 				Transition transition = (Transition)theEObject;
 				T result = caseTransition(transition);
+				if (result == null) result = caseNode(transition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PetrinetPackage.ARC: {
 				Arc arc = (Arc)theEObject;
 				T result = caseArc(arc);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PetrinetPackage.NODE: {
+				Node node = (Node)theEObject;
+				T result = caseNode(node);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -151,6 +159,21 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseArc(Arc object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNode(Node object) {
 		return null;
 	}
 

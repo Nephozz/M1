@@ -65,6 +65,7 @@ _opam/
 .ipynb_checkpoints/
 docs/build/
 docs/site/
+.vscode/
 
 
 workspace.xml

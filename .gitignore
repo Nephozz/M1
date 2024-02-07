@@ -20,6 +20,7 @@
 *.byte
 *.native
 
+
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
@@ -66,7 +67,7 @@ _opam/
 docs/build/
 docs/site/
 /.vscode
-
+__pycache__/
 
 workspace.xml
 junitvmwatcher*.properties

@@ -17,7 +17,7 @@ def lagrange(XX, YY, x_int):
     #           par les points de coordonnées (XX,YY)                         
 
     Pn_x = 0
-    for i in range(len(XX)):
+    for i in range(len(YY)):
         L  = 1
         for j in range(len(XX)):
             if j != i:
@@ -44,10 +44,8 @@ def lagrange_param(XX, YY, TT, list_tt):
                                                       
     xx, yy = [], []
     for t in list_tt:
-        x = lagrange(TT,XX,t)
-        y = lagrange(TT,YY,t)
-        xx.append(x)
-        yy.append(y)
+        xx.append(lagrange(TT,XX,t))
+        yy.append(lagrange(TT,YY,t))
 
     return xx, yy
 
@@ -79,7 +77,7 @@ def parametrisation_distance(nb_elt, pas_tps, XX, YY):
     #  sortie :  - List<float> T : subdivision reguliere                     
     #            - List<float> tToEval : echantillon sur la subdivision  
 
-    T = []
+    T = [0]
     for i in range(len(XX)):
         norm_P = math.dist([XX[i],YY[i]],[XX[i-1],YY[i-1]])
         T.append(T[i] + norm_P)
@@ -102,7 +100,7 @@ def parametrisation_racinedistance(nb_elt, pas_tps, XX, YY):
 
     T = [0]
     for i in range(nb_elt):
-        norm_P = math.dist([XX[i],YY[i]],[XX[i+1],YY[i+1]])
+        norm_P = math.dist([XX[i],YY[i]],[XX[i-1],YY[i-1]])
         T.append(T[i] + math.sqrt(norm_P))
 
     tToEval = [T[0]]
@@ -126,8 +124,8 @@ def parametrisation_Tchebycheff(nb_elt, pas_tps):
         cosi = math.cos((2*i+1)*math.pi / (2 * nb_elt + 2))
         T.append(cosi)
 
-    tToEval = [T[0]]
-    while tToEval[-1] < nb_elt:
+    tToEval = [min(T)]
+    while tToEval[-1] < max(T):
         tToEval.append(tToEval[-1] + pas_tps)
     
     return T, tToEval

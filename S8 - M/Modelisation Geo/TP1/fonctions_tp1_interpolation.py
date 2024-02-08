@@ -18,7 +18,7 @@ def lagrange(XX, YY, x_int):
 
     Pn_x = 0
     for i in range(len(YY)):
-        L  = 1
+        L = 1
         for j in range(len(XX)):
             if j != i:
                 L *= (x_int - XX[j]) / (XX[i] - XX[j])
@@ -59,10 +59,10 @@ def parametrisation_reguliere(nb_elt, pas_tps):
     #  sortie :  - List<float> T : subdivision reguliere                     
     #            - List<float> tToEval : echantillon sur la subdivision  
 
-    T = [i for i in range(nb_elt)]
+    T = [i for i in range(nb_elt + 1)]
     
     tToEval = [T[0]]
-    while tToEval[-1] < nb_elt:
+    while tToEval[-1] < T[-1]:
         tToEval.append(tToEval[-1] + pas_tps)
     
     return T,tToEval

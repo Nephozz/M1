@@ -63,26 +63,17 @@ X = [X_pensees ; X_oeillets ; X_chrysanthemes];
 k_min = 2;
 k_max = 7;
 nb_clust = k_max - k_min + 1;
-scores = zeros(1, nb_clust);
 
-for k = k_min:k_max
-    
-    Y_pred = kmeans(X, k);
+% Evaluation numérique de la partition :
+eval_result = evalclusters(X, 'kmeans', 'CalinskiHarabasz', 'KList', k_min:k_max);
 
-    % Evaluation numérique de la partition :
-    eval_result = evalclusters(X, Y_pred, 'CalinskiHarabasz');
+% Accéder aux valeurs du critère de Calinski-Harabasz
+k = eval_result.OptimalK
 
-    % Accéder aux valeurs du critère de Calinski-Harabasz
-    scores(k - k_min + 1) = eval_result.CriterionValues;
-end
-
-[~, i] = max(scores);
-
-k = i + 1;
 Y_pred = kmeans(X, k);
 
 % Evaluation numerique de la partition :
-score_partition = calcul_score(Y_pred(i),Y);
+score_partition = calcul_score(Y_pred,Y);
 
 % Affichage de la partition :
 couleur = [1 0 0 ; 0 1 1 ; 0 0 1 ; 1 0 1 ; 1 1 0 ; 0 1 0 ; 0 0 0];
@@ -103,11 +94,3 @@ xlabel('$\bar{r}$','Interpreter','Latex');
 ylabel('$\bar{v}$','Interpreter','Latex');
 legend([leg{1},leg{2},leg{3}],'Cluster 1','Cluster 2','Cluster 3','Location','Best');
 set(gca,'FontSize',20);
-
-figure;
-plot(k_min:k_max, scores, 'o-', 'LineWidth', 2);
-title('Critère de Calinski-Harabasz pour différents nombres de clusters (k)');
-xlabel('Nombre de clusters (k)');
-ylabel('Critère de Calinski-Harabasz');
-grid on;
-set(gca, 'FontSize', 15);

@@ -111,9 +111,10 @@ def configuration_problematique(X1, X2, Y1, Y2):
     plt.legend()
     plt.show()
 
-## Affiche l'interpolation avec les 4 paramétrisations 
+## Affiche l'interpolation avec les 4 paramétrisations différentes
 ## La paramétre booléen meme_intervalle permet d'afficher les 4 courbes dans le mêne intervalle
 def comparaison_paramétrisation(methode, T, list_t, X_pts_controles, Y_pts_controles, meme_intervalle):
+
     labels_param = ['Regulière', 'Distance', 'Racine de distance', 'Tchebycheff']
     fig, axs = plt.subplots(2, 2, figsize = (15,12))
     fig.suptitle("Interpolation paramétrique")
@@ -123,10 +124,13 @@ def comparaison_paramétrisation(methode, T, list_t, X_pts_controles, Y_pts_cont
         ## Recherche du min/max pour les 2 axes
         X_param = []; Y_param = []
         for k in range(len(T)):
-            if methode == 'lagrange' : 
+            if ((methode == 'lagrange') & (T[k]!=[])) :
                 x_param, y_param = lagrange_param(X_pts_controles, Y_pts_controles, T[k], list_t[k])
-            else :
+
+            elif ((methode == 'neville') & (T[k]!=[])) :  
                 x_param, y_param = neville_param(X_pts_controles, Y_pts_controles, T[k], list_t[k])
+
+            else : x_param = [0]; y_param=[0]
             X_param.append(x_param); Y_param.append(y_param)
 
         X_mini = min(list(itertools.chain(*X_param)))
@@ -142,19 +146,21 @@ def comparaison_paramétrisation(methode, T, list_t, X_pts_controles, Y_pts_cont
             axs[pos,k%2].set_xlim([X_mini-epsilon, X_maxi+epsilon])
             axs[pos,k%2].set_ylim([Y_mini-epsilon, Y_maxi+epsilon])
             if k%2 !=0 : pos = pos +1  
- 
+
     else :
         for k in range(len(T)):
-            if methode == 'lagrange' : 
+            if ((methode == 'lagrange') & (T[k]!=[])) :
                 x_param, y_param = lagrange_param(X_pts_controles, Y_pts_controles, T[k], list_t[k])
-            else :
+            elif ((methode == 'neville') & (T[k]!=[])) :  
                 x_param, y_param = neville_param(X_pts_controles, Y_pts_controles, T[k], list_t[k])
+            else : x_param = [0]; y_param=[0]
     
             # Affichage 
             axs[pos,k%2].scatter(X_pts_controles, Y_pts_controles, c=cm.rainbow(np.linspace(0, 1, len(X_pts_controles))))
             axs[pos,k%2].plot(x_param,y_param)
             axs[pos,k%2].set_title('Paramètrisation '+labels_param[k])
             if k%2 !=0 : pos = pos +1
+
 
 ### Affiche toutes les étapes de la surface 3D en produit tensoriel
 def show_surface(X, Y, Z, interpolated_surface):

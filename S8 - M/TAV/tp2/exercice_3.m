@@ -26,7 +26,7 @@ eval_result = evalclusters(features, 'kmeans', 'CalinskiHarabasz', 'KList', rang
 
 % Algorithme de K-means et reconstruction de l'image segmentée
 k = eval_result.OptimalK;
-[idx, ~] = kmeans(features, k);
+[idx, ~] = kmeans(features, 9);
 segmented_image = reshape(idx, [height, width]);
 
 % Affichage

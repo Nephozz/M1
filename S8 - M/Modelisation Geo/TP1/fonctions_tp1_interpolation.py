@@ -42,7 +42,8 @@ def lagrange_param(XX, YY, TT, list_tt):
     #  sortie : points (xx, yy) de la courbe interpolée
     #     
                                                       
-    xx, yy = [], []
+    xx = []
+    yy = []
     for t in list_tt:
         xx.append(lagrange(TT,XX,t))
         yy.append(lagrange(TT,YY,t))
@@ -59,7 +60,7 @@ def parametrisation_reguliere(nb_elt, pas_tps):
     #  sortie :  - List<float> T : subdivision reguliere                     
     #            - List<float> tToEval : echantillon sur la subdivision  
 
-    T = [i for i in range(nb_elt + 1)]
+    T = [i for i in range(nb_elt)]
     
     tToEval = [T[0]]
     while tToEval[-1] < T[-1]:
@@ -78,12 +79,12 @@ def parametrisation_distance(nb_elt, pas_tps, XX, YY):
     #            - List<float> tToEval : echantillon sur la subdivision  
 
     T = [0]
-    for i in range(len(XX)):
-        norm_P = math.dist([XX[i],YY[i]],[XX[i-1],YY[i-1]])
+    for i in range(nb_elt - 1):
+        norm_P = math.dist([XX[i],YY[i]],[XX[i+1],YY[i+1]])
         T.append(T[i] + norm_P)
     
     tToEval = [T[0]]
-    while tToEval[-1] < nb_elt:
+    while tToEval[-1] < T[-1]:
         tToEval.append(tToEval[-1] + pas_tps)
     
     return T, tToEval
@@ -99,12 +100,12 @@ def parametrisation_racinedistance(nb_elt, pas_tps, XX, YY):
     #            - List<float> tToEval : echantillon sur la subdivision  
 
     T = [0]
-    for i in range(nb_elt):
-        norm_P = math.dist([XX[i],YY[i]],[XX[i-1],YY[i-1]])
+    for i in range(nb_elt-1):
+        norm_P = math.dist([XX[i],YY[i]],[XX[i+1],YY[i+1]])
         T.append(T[i] + math.sqrt(norm_P))
 
     tToEval = [T[0]]
-    while tToEval[-1] < nb_elt:
+    while tToEval[-1] < T[-1]:
         tToEval.append(tToEval[-1] + pas_tps)
     
     return T, tToEval
@@ -120,7 +121,7 @@ def parametrisation_Tchebycheff(nb_elt, pas_tps):
     #            - List<float> tToEval : echantillon sur la subdivision  
 
     T = []
-    for i in range(nb_elt + 1):
+    for i in range(nb_elt):
         cosi = math.cos((2*i+1)*math.pi / (2 * nb_elt + 2))
         T.append(cosi)
 
@@ -142,8 +143,21 @@ def neville(XX, YY, TT, tt):
     #               - tt : temps ou on cherche le point de la courbe             
     #      sortie : point atteint en t de la courbe 
     
-    #TODO
-    return 0,0
+    xx = [XX]
+    yy = [YY]
+    
+    print(len(TT))
+    
+    for l in range(len(TT) - 1):
+        print("couche : ", l)
+        xx.append([])
+        yy.append([])
+        for i in range(len(TT) - (l + 1)):
+            print("point : ", i)
+            xx[l+1].append((TT[i+1] - tt) / (TT[i+1] - TT[i]) * xx[l][i] + (tt - TT[i]) / (TT[i+1] - TT[i]) * xx[l][i+1])
+            yy[l+1].append((TT[i+1] - tt) / (TT[i+1] - TT[i]) * yy[l][i] + (tt - TT[i]) / (TT[i+1] - TT[i]) * yy[l][i+1])
+    
+    return xx[-1],yy[-1]
 
 
 def neville_param(XX, YY, TT, list_tt):
@@ -157,8 +171,15 @@ def neville_param(XX, YY, TT, list_tt):
     #           - List<float> list_tt : échantillon des temps sur TT         
     #  sortie : points (xx,yy) de la courbe interpolée                                                        
 
-    #TODO
-    return 0,0
+    xx = []
+    yy = []
+    
+    for tt in list_tt:
+        x, y = neville(XX,YY,TT,tt)
+        xx.append(x)
+        yy.append(y)
+        
+    return xx, yy
 
 
 ################################################################################################

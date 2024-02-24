@@ -13,16 +13,12 @@ nb_points_affichage_disque = 30;
 increment_angulaire = 2*pi/nb_points_affichage_disque;
 theta = 0:increment_angulaire:2*pi;
 rose = [253 108 158]/255;
-q_max = 200;
+q_max = 160;
 nb_affichages = 1000;
 pas_entre_affichages = floor(q_max/nb_affichages);
 temps_pause = 0.0001;
-S = 140;
-gamma = 5;
 T = 0.1;
 lambda = 100;
-alpha = 0.99;
-beta = 1;
 
 % Lecture et affichage de l'image :
 I = imread('colonie.png');
@@ -59,7 +55,7 @@ ylabel('Énergie','FontSize',20);
 % Recherche de la configuration optimale :
 for q = 1:q_max
 
-	[c, T, lambda, Uc] = morts_naissances(lambda,gamma,S,c,T,alpha,beta,I,R);
+	[c, T, lambda, Uc] = morts_naissances(lambda,c,T,I,R);
 
 	set(figure1,'Name',['Detection de ' num2str(length(c)) ' flamants roses']);
 

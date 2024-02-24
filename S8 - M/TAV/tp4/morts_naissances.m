@@ -1,4 +1,8 @@
-function [config, T, lambda, Uc] = morts_naissances(lambda,gamma,S,config_init,T,alpha,beta,I,R)
+function [config, T, lambda, Uc] = morts_naissances(lambda,config_init,T,I,R)
+    alpha = 0.99;
+    beta = 1;
+    S = 140;
+    gamma = 5;
     config = config_init;
 
     [nb_lignes,nb_colonnes] = size(I);
@@ -13,19 +17,15 @@ function [config, T, lambda, Uc] = morts_naissances(lambda,gamma,S,config_init,T
     N = length(config);
 
     % Tri des disques
-    I_moyen = zeros(N,1);
-    for i = 1:N
-        I_moyen(i) = calcul_I_moyen(I,config(i,:),R);
-    end
+    I_moyen = arrayfun(@(i) calcul_I_moyen(I, config(i,:), R), 1:N);
 
     expo = exp(-gamma .* (I_moyen ./ S - 1));
     U_i = 2 ./ (1 + expo);
     U_i = 1 - U_i;
 
-    sorted_config = sortrows([config U_i], 3);
-    U_i = sorted_config(:,3);
-    config = sorted_config(:,1:2);
-
+    [~, sorted_indices] = sort(U_i);
+    config = config(sorted_indices, :);
+    U_i = U_i(sorted_indices);
     % Morts
     config_pre_death = config;
     i = 1;
@@ -37,6 +37,7 @@ function [config, T, lambda, Uc] = morts_naissances(lambda,gamma,S,config_init,T
         
         if rand < proba
             config(i,:) = [];
+            voisins(end) = [];
             continue
         end
         i = i + 1;
@@ -45,10 +46,8 @@ function [config, T, lambda, Uc] = morts_naissances(lambda,gamma,S,config_init,T
     Uc = sum(U_i) + beta * sum(voisins);
 
     % Test de convergance
-    if prod(size(config) == size(config_pre_death))
-        if prod(config == config_pre_death, 'all')
+    if isequal(size(config), size(config_pre_death)) && isequal(config, config_pre_death)
             return
-        end
     end
 
     lambda = alpha * lambda;

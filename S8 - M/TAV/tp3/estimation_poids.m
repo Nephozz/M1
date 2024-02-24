@@ -1,14 +1,11 @@
 function [P,argument] = estimation_poids(mu_test,sigma_test,liste_nvg,F)
-    n = length(liste_nvg);
-    N = length(mu_test);
+    expo = exp(-((repmat(liste_nvg',1,size(mu_test,2)) - mu_test).^2)./(2*(sigma_test.^2)));
 
-    A = zeros(n, N);
+    A = (expo./(sigma_test.*(sqrt(2*pi))));
 
-    for i=1:N
-        A(:,i) = exp((liste_nvg - mu_test(i)).^2 ./ (2 * sigma_test(i).^2)) ./ (sqrt(2) * sigma_test(i));
-    end
+    P = A\F';
 
-    P = A\F;
+    somme_classe = sum(A*P,2);
 
-    argument = sum(A*P);
+    argument = sum(F' - somme_classe,1);
 end

@@ -7,7 +7,7 @@ H = taille_ecran(4);
 
 
 % Parametres :
-N = 50;					% Nombre de disques d'une configuration
+N = 450;					% Nombre de disques d'une configuration
 R = 7;					% Rayon des disques
 nb_points_affichage_disque = 30;
 increment_angulaire = 2*pi/nb_points_affichage_disque;

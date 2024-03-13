@@ -143,21 +143,23 @@ def neville(XX, YY, TT, tt):
     #               - tt : temps ou on cherche le point de la courbe             
     #      sortie : point atteint en t de la courbe 
     
-    xx = [XX]
-    yy = [YY]
+    P = XX + YY
+    n = len(XX)
     
-    print(len(TT))
+    for i in range(n - 1):
+        for j in range(n - (i + 1)):
+            td = TT[j]
+            tg = TT[i+j+1]
+            TG = (tg - tt)/(tg - td)
+            TD = (tt - td)/(tg - td)
+            
+            P[j] = TG * P[j] + TD * P[j+1]
+            P[j+n] = TG * P[j+n] + TD * P[j+n+1]
     
-    for l in range(len(TT) - 1):
-        print("couche : ", l)
-        xx.append([])
-        yy.append([])
-        for i in range(len(TT) - (l + 1)):
-            print("point : ", i)
-            xx[l+1].append((TT[i+1] - tt) / (TT[i+1] - TT[i]) * xx[l][i] + (tt - TT[i]) / (TT[i+1] - TT[i]) * xx[l][i+1])
-            yy[l+1].append((TT[i+1] - tt) / (TT[i+1] - TT[i]) * yy[l][i] + (tt - TT[i]) / (TT[i+1] - TT[i]) * yy[l][i+1])
+    x = P[0]
+    y = P[n]
     
-    return xx[-1],yy[-1]
+    return x,y
 
 
 def neville_param(XX, YY, TT, list_tt):
@@ -198,10 +200,30 @@ def interpolate_surface(XX, YY, ZZ, TT, list_tt, nb_point_grille):
     #               - List<float> list_tt : échantillon des temps sur TT                
     #      sortie : (Array<float> points 3D des courbes interpolées en fixant Y,
     #                   Array<float> points 3D des courbes interpolées en fixant X)
+    #               il faut plutôt une matrice cubique n*n*3
 
+    n = len(list_tt)
+    mat_out = np.zeros((n,n,3))
+    
+    LX = np.zeros((nb_point_grille,n))
+    LY = np.zeros((nb_point_grille,n))
+    LZ = np.zeros((nb_point_grille,n))
 
-    #TODO
-    return 0,0
+    for i in range(nb_point_grille):    
+        for k in range(n):
+            t = list_tt[k]
+            LX[i,k] = lagrange(TT,XX[i,:],t)
+            LY[i,k] = lagrange(TT,YY[i,:],t)
+            LZ[i,k] = lagrange(TT,ZZ[i,:],t)
+        
+    for j in range(nb_point_grille):
+        for k in range(nb_point_grille):
+            t = list_tt[k]
+            mat_out[k,j,0] = lagrange(TT,LX[:,j],t)
+            mat_out[k,j,1] = lagrange(TT,LY[:,j],t)
+            mat_out[k,j,2] = lagrange(TT,LZ[:,j],t)
+    
+    return mat_out
 
 
 

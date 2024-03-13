@@ -1,4 +1,3 @@
-
 import numpy as np
 import matplotlib.pyplot as plt 
 import matplotlib.cm as cm
@@ -24,14 +23,15 @@ def echantillonnage(nb_ech):
     #  sortie :                      
     #            - List<float> list_tt : temps d'évaluation  
 
-    list_tt = [0] 
+    list_tt = [t / nb_ech for t in range(nb_ech)] 
 
     return list_tt
 
 def k_parmi_n(k, n):
     #  fonction : k_parmi_n                                                  
     #  semantique : calculs de coefficient binomial           
-    return 1
+    
+    return math.factorial(n) / (math.factorial(k) * math.factorial(n - k)) 
 
 
 def build_polys_bernstein(degre_max, list_tt) -> list:
@@ -44,8 +44,18 @@ def build_polys_bernstein(degre_max, list_tt) -> list:
     #              contenant degre_max matrices de points 2D, une pour chaque polynome de Bernstein.
     #              Chaque matrice contient len(list_tt) points.
     #     
-
+    
     liste_points = []
+    
+    for i in range(degre_max + 1):
+        liste_poly = np.zeros((len(list_tt),2))
+        liste_poly[:,0] = list_tt
+        
+        for j in range(len(list_tt)):
+            t = list_tt[j]
+            liste_poly[j,1] = k_parmi_n(i, degre_max) * pow(t,i) * pow((1 - t),(degre_max - i))
+            
+        liste_points.append(liste_poly)
 
     return liste_points
 
@@ -59,8 +69,18 @@ def DeCasteljau(DD, tt):
     #                 
     #  sortie : - float d : valeur (abscisses ou ordonnées)  approximée en tt 
     #           
-          
-    return 0
+    
+    n = len(DD)
+    
+    P = DD
+    
+    for i in range(n):
+        for j in range(n - (i + 1)):
+            P[j] = (1 - tt) * P[j] + tt * P[j+1]
+    
+    d = P[0]        
+    
+    return d
 
 def subdivision(X,Y):
     #  fonction : subdivision                                                  

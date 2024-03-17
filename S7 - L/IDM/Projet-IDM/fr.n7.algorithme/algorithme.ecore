@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="algorithme" nsURI="http://algorithme" nsPrefix="algorithme">
+  <eClassifiers xsi:type="ecore:EClass" name="Algorithme">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="algorithmeElements" upperBound="-1"
+        eType="#//AlgorithmeElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AlgorithmeElement" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Documentation" eSuperTypes="#//AlgorithmeElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//AlgorithmeElement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="texte" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ressource" eSuperTypes="#//AlgorithmeElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+        eType="#//Port" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chemin" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TypeRessource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="calcul" eType="ecore:EClass ../fr.n7.calcul/calcul.ecore#//Calcul"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortEntree" eSuperTypes="#//Port">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argument" eType="ecore:EClass ../fr.n7.calcul/calcul.ecore#//Argument"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortSortie" eSuperTypes="#//Port">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sortie" eType="ecore:EClass ../fr.n7.calcul/calcul.ecore#//Sortie"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeRessource">
+    <eLiterals name="CALCUL"/>
+    <eLiterals name="SCRIPT" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

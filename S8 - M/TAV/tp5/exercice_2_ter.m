@@ -16,21 +16,10 @@ figure('Name','Debruitage par variation totale',...
 	'Position',[0.05*L,0.1*H,0.9*L,0.7*H]);
 
 % Lecture de l'image :
-u_0 = double(imread('Images/grenouille_avec_texte.png'));
+u_0 = double(imread('Images/randonneur.jpg'));
+u_D = double(imread('Images/masque_randonneur.png'));
 [nb_lignes,nb_colonnes,nb_canaux] = size(u_0);
 u_max = max(u_0(:));
-
-% Creation de l'image masquee avec la couleur jaune :
-u_D = u_0;
-for i = 1:nb_lignes
-	for j = 1:nb_colonnes
-		if u_0(i,j,1) > 200 && u_0(i,j,2) > 200 && u_0(i,j,3) < 100
-			u_D(i,j,:) = [255 255 255];
-		else
-			u_D(i,j,:) = [0 0 0];
-		end
-	end
-end
 
 % Affichage de l'image :
 subplot(1,3,1)
@@ -69,7 +58,7 @@ Dy(nb_lignes:nb_lignes:end,:) = 0;
 b = u_0;
 		
 % Point fixe :
-lambda = 15;			% Poids de la regularisation
+lambda = 1;			% Poids de la regularisation
 u_k = u_0;
 convergence = +Inf;
 iteration = 0;

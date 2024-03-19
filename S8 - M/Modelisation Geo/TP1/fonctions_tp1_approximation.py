@@ -23,7 +23,7 @@ def echantillonnage(nb_ech):
     #  sortie :                      
     #            - List<float> list_tt : temps d'évaluation  
 
-    list_tt = [t / nb_ech for t in range(nb_ech)] 
+    list_tt = np.linspace(0, 1, nb_ech)
 
     return list_tt
 
@@ -68,20 +68,18 @@ def DeCasteljau(DD, tt):
     #           - float tt : temps d'évaluation     
     #                 
     #  sortie : - float d : valeur (abscisses ou ordonnées)  approximée en tt 
-    #           
+    #
     
     n = len(DD)
     
-    P = DD
-    
-    for i in range(n):
-        for j in range(n - (i + 1)):
-            P[j] = (1 - tt) * P[j] + tt * P[j+1]
-    
-    d = P[0]        
+    for k in range(1, n):
+        for i in range(n - k):
+            DD[i] = (1 - tt) * DD[i] + tt * DD[i + 1]
+            
+    d = DD[0]
     
     return d
-
+    
 def subdivision(X,Y):
     #  fonction : subdivision                                                  
     #  semantique : correspond à 1 étape de subdivision
@@ -99,6 +97,16 @@ def subdivision(X,Y):
     QY = []
     RX = []
     RY = []
+    
+    n = len(X)
+
+    for i in range(n+1):
+        if (i <= n // 2):
+            QX.append((X[max(0,i-1)] + X[i]) / 2.0)
+            QY.append((Y[max(0,i-1)] + Y[i]) / 2.0)
+        else:
+            RX.append((X[i-1] + X[min(i,n-1)]) / 2.0)
+            RY.append((Y[i-1] + Y[min(i,n-1)]) / 2.0)
 
     return QX, QY, RX, RY
 
@@ -114,10 +122,11 @@ def DeCasteljauSub(X, Y, nombreDeSubdivision):
     #  sortie :  (List<float>, List<float>) : une liste avec les abscisses 
     #            et une liste avec les ordonnées des points de la courbe  
 
-    XSubdivision = []
-    YSubdivision = []
-
-    return (XSubdivision, YSubdivision)
+    if (nombreDeSubdivision == 0):
+        return (X, Y)
+    else:
+        QX, QY, RX, RY = subdivision(X,Y)
+        return DeCasteljauSub(QX + RX, QY + RY, nombreDeSubdivision - 1)
 
 def approximation_surface(XX, YY, ZZ, list_tt, nb_point_grille):
     #  fonction : appromation_surface                                                  
@@ -132,7 +141,29 @@ def approximation_surface(XX, YY, ZZ, list_tt, nb_point_grille):
     #               - Array<vfloat> : coordonnées 3D des points de la surface approximée, 
     #                 la dimension associée est : (nb_echantillon, nb_echantillon, 3)
     
-    approx_pointsYZ = np.ones((5,5,3))*0.8
+    nb_echantillon = len(list_tt)
+    approx_pointsYZ = np.zeros((nb_echantillon, nb_echantillon, 3))
+    result_ligne = np.zeros((nb_point_grille, nb_echantillon, 3))
+
+    # Interpolation sur les lignes
+    for i in range(nb_point_grille):
+        for j in range(nb_echantillon):
+            X = DeCasteljau(XX[i,:], list_tt[j])
+            Y = DeCasteljau(YY[i,:], list_tt[j])
+            Z = DeCasteljau(ZZ[i,:], list_tt[j])
+            result_ligne[i,j,0] = X
+            result_ligne[i,j,1] = Y
+            result_ligne[i,j,2] = Z
+    
+    # Interpolation sur les colonnes
+    for j in range(nb_echantillon):
+        for i in range(nb_echantillon):
+            X = DeCasteljau(result_ligne[:,j,0], list_tt[i])
+            Y = DeCasteljau(result_ligne[:,j,1], list_tt[i])
+            Z = DeCasteljau(result_ligne[:,j,2], list_tt[i])
+            approx_pointsYZ[i,j,0] = X
+            approx_pointsYZ[i,j,1] = Y
+            approx_pointsYZ[i,j,2] = Z
 
     return approx_pointsYZ
 

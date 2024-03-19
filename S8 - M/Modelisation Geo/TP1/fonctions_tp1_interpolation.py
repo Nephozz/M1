@@ -202,28 +202,25 @@ def interpolate_surface(XX, YY, ZZ, TT, list_tt, nb_point_grille):
     #                   Array<float> points 3D des courbes interpolées en fixant X)
     #               il faut plutôt une matrice cubique n*n*3
 
-    n = len(list_tt)
-    mat_out = np.zeros((n,n,3))
+    nb_echantillon = len(list_tt)
+    mat_out = np.zeros((nb_echantillon,nb_echantillon,3))
     
-    LX = np.zeros((nb_point_grille,n))
-    LY = np.zeros((nb_point_grille,n))
-    LZ = np.zeros((nb_point_grille,n))
+    LX = np.zeros((nb_point_grille,nb_echantillon))
+    LY = np.zeros((nb_point_grille,nb_echantillon))
+    LZ = np.zeros((nb_point_grille,nb_echantillon))
 
     for i in range(nb_point_grille):    
-        for k in range(n):
+        for k in range(nb_echantillon):
             t = list_tt[k]
             LX[i,k] = lagrange(TT,XX[i,:],t)
             LY[i,k] = lagrange(TT,YY[i,:],t)
             LZ[i,k] = lagrange(TT,ZZ[i,:],t)
         
-    for j in range(nb_point_grille):
-        for k in range(nb_point_grille):
+    for j in range(nb_echantillon):
+        for k in range(nb_echantillon):
             t = list_tt[k]
             mat_out[k,j,0] = lagrange(TT,LX[:,j],t)
             mat_out[k,j,1] = lagrange(TT,LY[:,j],t)
             mat_out[k,j,2] = lagrange(TT,LZ[:,j],t)
     
     return mat_out
-
-
-

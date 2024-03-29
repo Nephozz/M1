@@ -107,10 +107,11 @@ public class Transformation  {
         ps = projection.multiply(ps);
 
         double z = ps.get(2);
-        ps.set(0, ps.get(0) / z);
-        ps.set(1, ps.get(1) / z);
+        ps.scale(1/z);
 
         ps = calibration.multiply(ps);
+
+        ps.set(2, z);
 
 	    return new Vector3 (ps);
     }

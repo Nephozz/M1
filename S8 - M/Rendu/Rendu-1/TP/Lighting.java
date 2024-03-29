@@ -40,28 +40,28 @@ public class Lighting {
             Light light = (Light) it.next ();
             switch (light.type) {
                 case AMBIENT:
-                    /* Ambient light : A COMPLETER */
-		    /* I += ... */
+                    /* Ambient light */
+                    I += light.params[0] * ka;
                     break;
                 case POINT:
                     try {
-                    /* vector from point to camera center */
-                    Vector3 e = new Vector3 (cameraPosition);
-                    e.subtract (position);
-                    e.normalize ();
-                    /* vector from point to light*/
-                    Vector3 l = new Vector3 (light.params[0], light.params[1], light.params[2]);
-                    l.subtract (position);
-                    l.normalize ();
-                    /* half-vector between e and l*/
-                    Vector3 h = new Vector3 (e);
-                    h.add (l);
-                    h.normalize ();
-                    /* diffuse contribution : A COMPLETER */
-                    /* double Id = ... */
-                    /* specular contribution : A COMPLETER */
-                    /* double Is = ... */
-                    /* I += Id + Is;*/
+                        /* vector from point to camera center */
+                        Vector3 e = new Vector3 (cameraPosition);
+                        e.subtract (position);
+                        e.normalize ();
+                        /* vector from point to light*/
+                        Vector3 l = new Vector3 (light.params[0], light.params[1], light.params[2]);
+                        l.subtract (position);
+                        l.normalize ();
+                        /* half-vector between e and l*/
+                        Vector3 h = new Vector3 (e);
+                        h.add (l);
+                        h.normalize ();
+                        /* diffuse contribution */
+                        double Id = light.params[3] * kd * l.dot(normal) / (l.norm() * normal.norm());
+                        /* specular contribution : A COMPLETER */
+                        double Is = light.params[3] * ks * l.dot(h) / (l.norm() * h.norm());
+                        I += Id + Is;
                     } catch (InstantiationException ex) { /* should not reach*/ }
                       catch (SizeMismatchException  ex) { /* should not reach*/ }
                     break;

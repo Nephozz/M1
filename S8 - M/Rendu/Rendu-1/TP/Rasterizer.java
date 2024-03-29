@@ -82,7 +82,7 @@ public class Rasterizer {
 		}
 
   
-        /* tracé d'un segment avec l'algo de Bresenham 
+        // tracé d'un segment avec l'algo de Bresenham 
 	int numAttributes = v1.getNumAttributes ();
         Fragment fragment = new Fragment (0, 0); //, numAttributes);
         
@@ -137,7 +137,6 @@ public class Rasterizer {
                 shader.shade (fragment);
             }
 		}
-*/
 
     }
 
@@ -182,9 +181,34 @@ public class Rasterizer {
 
         Matrix C = makeBarycentricCoordsMatrix (v1, v2, v3);
 
+        int x_min = Math.min(v1.getX(), Math.min(v2.getX(), v3.getX()));
+        int y_min = Math.min(v1.getY(), Math.min(v2.getY(), v3.getY()));
+        int x_max = Math.max(v1.getX(), Math.max(v2.getX(), v3.getX()));
+        int y_max = Math.max(v1.getY(), Math.max(v2.getY(), v3.getY()));
         /* iterate over the triangle's bounding box */
-        
-	/* A COMPLETER */
+        for (int x = x_min; x <= x_max; x++) {
+            for(int y = y_min; y <= y_max; y++) {
+                try {
+                    Vector bary = C.multiply(new Vector3(1, x, y));
+                    double alpha = bary.get(0);
+                    double beta = bary.get(1);
+                    double gamma = bary.get(2);
+
+                    if (alpha >= 0 && beta >= 0 && gamma >= 0) {
+                        Fragment f = new Fragment(x, y);
+                        
+                        for (int i = 0; i < v1.getNumAttributes(); i++) {
+                            double att = alpha * v1.getAttribute(i) + beta * v2.getAttribute(i) + gamma * v3.getAttribute(i); 
+                            f.setAttribute(i, att);
+                        }
+
+                        shader.shade(f);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }  
 }

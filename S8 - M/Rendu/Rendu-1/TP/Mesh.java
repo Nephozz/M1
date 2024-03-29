@@ -117,26 +117,27 @@ public class Mesh {
         try {
             for (int i = 0; i < 3 * getNumFaces(); i += 3) {
 
+                Vector3 n = new Vector3();
 
+                Vector3 e1 = new Vector3(vertices[i]);
+                Vector3 e2 = new Vector3(vertices[i+1]);
 
-		/* A COMPLETER */
+                e1.subtract(vertices[i+2]);
+                e2.subtract(vertices[i]);
 
+                n = e1.cross(e2);
+                        
+                // ajoute la normale calculee a chq sommet de la face
+                for (int j = 0; j < 3; j++) { 
+                            Vector nj = normals[faces[i+j]];
 
-		Vector3 n = new Vector3(); //?
-
-
-                
-		// ajoute la normale calculee a chq sommet de la face
-		for (int j = 0; j < 3; j++) { 
-                    Vector nj = normals[faces[i+j]];
-
-                    if (nj == null) {
-                        normals[faces[i+j]] = new Vector3 (n);
-                        normals[faces[i+j]].setName ("n" + faces[i+j]);
-                    } else {
-                        nj.add (n);
-                    }
-		}
+                            if (nj == null) {
+                                normals[faces[i+j]] = new Vector3 (n);
+                                normals[faces[i+j]].setName ("n" + faces[i+j]);
+                            } else {
+                                nj.add (n);
+                            }
+                }
             }
         } catch (InstantiationException e) { System.out.println ("Should not reach 1"); }
           catch (SizeMismatchException e) { System.out.println ("Should not reach 2"); }

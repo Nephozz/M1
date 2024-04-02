@@ -27,10 +27,9 @@ public class Texture {
      */ 
     public Color sample (double u, double v) {
 
+        int x = (int)((u%1) * width); 
+        int y = (int)((v%1) * height);
 
-	/* A COMPLETER */
-
-
-        return new Color (0,0,0);
+        return new Color (image.getRGB(x, y));
     }
 }

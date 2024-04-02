@@ -38,10 +38,14 @@ public class TextureShader extends Shader {
             /* The Fragment may not have texture coordinates */
             try {
 
+                int x = fragment.getX();
+                int y = fragment.getY();
 
+                double[] uv = fragment.getAttribute(7, 2);
 
-		/* à compléter */
-
+                Color colorTex = texture.sample(uv[0], uv[1]);
+                
+                screen.setPixel(x, y, colorTex);
 
 
             } catch (ArrayIndexOutOfBoundsException e) {

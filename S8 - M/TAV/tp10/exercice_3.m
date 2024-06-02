@@ -5,7 +5,7 @@ L = taille_ecran(3);
 H = taille_ecran(4);
 
 % Lecture d'un fichier audio :
-[y, f_ech] = audioread('Audio/mpl.wav');
+[y, f_ech] = audioread('Audio/overworld.wav');
 y = mean(y, 2);
 
 % Affichage du signal original, en guise de comparaison :
@@ -19,9 +19,9 @@ xlabel('Frequence ($Hz$)', Interpreter='Latex', FontSize=30);
 title('Signal original','FontSize',20);
 
 % Ajout d'un effet :
-y_modifie = changement_vitesse(y, f_ech, 1.5);		% Paramètre à faire varier entre 0.8 et 1.5
- y_modifie = etirement_temporel(y, f_ech, 0.8);		% Paramètre à faire varier entre 0.8 et 1.4
-% y_modifie = transposition(y, f_ech, 1.1);		% Paramètre à faire varier entre 0.9 et 1.1
+%y_modifie = changement_vitesse(y, f_ech, 1.5);		% Paramètre à faire varier entre 0.8 et 1.5
+y_modifie = etirement_temporel(y, f_ech, 1.5);		% Paramètre à faire varier entre 0.8 et 1.4
+%y_modifie = transposition(y, f_ech, 1.6);		% Paramètre à faire varier entre 0.9 et 1.1
 
 % Gestion des limites de l'axe temporel :
 % (une fonction qui permet d'avoir les mêmes limites pour les subplots ?)

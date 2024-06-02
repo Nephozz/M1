@@ -30,7 +30,7 @@ j_p_min = min(j_p(:));
 j_p_max = max(j_p(:));
 
 % Lecture et affichage de l'image cible c :
-c = imread('Images/montagne.jpg');
+c = imread('Images/oeil.jpg');
 [nb_lignes_c,nb_colonnes_c,nb_canaux] = size(c);
 subplot(1,2,2);
 imagesc(c);

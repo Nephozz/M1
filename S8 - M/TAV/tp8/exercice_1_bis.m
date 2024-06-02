@@ -11,7 +11,7 @@ s = fft2(u);
 s = fftshift(s);			% Permet de positionner l'origine (0,0) au centre
 
 % Partition de s_u :
-etha = 0.01;
+etha = 0.05;
 [f_x,f_y] = meshgrid(1:nb_colonnes,1:nb_lignes);
 f_x = f_x/nb_colonnes -0.5;
 f_y = f_y/nb_colonnes -0.5;

@@ -19,6 +19,7 @@ pas_entre_affichages = floor(q_max/nb_affichages);
 temps_pause = 0.0001;
 T = 0.1;
 lambda = 100;
+N_test = 1000;
 
 % Lecture et affichage de l'image :
 I = imread('colonie.png');

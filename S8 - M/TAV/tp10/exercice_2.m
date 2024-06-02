@@ -31,7 +31,8 @@ title('Sonagramme original', FontSize=20);
 taux_compression = 0;
 % Y_modifie = passe_bas(Y, valeurs_f, 1000);
 % Y_modifie = passe_haut(Y, valeurs_f, 1000);
-[Y_modifie,taux_compression] = compression(Y, 100);
+% [Y_modifie,taux_compression] = compression(Y, 20);
+Y_modifie = compression_avance(Y);
 
 % Affichage de la TFCT reconstituée :
 S_modifie = 20 * log10(abs(Y_modifie));		% Sonagramme modifié en décibels

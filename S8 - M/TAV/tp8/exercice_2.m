@@ -10,7 +10,7 @@ figure('Name','Décomposition par variation totale',...
 	'Position',[0.05*L,0.1*H,0.9*L,0.7*H]);
 
 % Lecture de l'image :
-u_0 = double(imread('Images/Lena.jpg'));
+u_0 = double(imread('Images/tintin.png'));
 [nb_lignes,nb_colonnes,nb_canaux] = size(u_0);
 u_max = max(u_0(:));
 
@@ -51,7 +51,7 @@ Dy(nb_lignes:nb_lignes:end,:) = 0;
 b = u_0;
 		
 % Point fixe :
-lambda = 100;			% Poids de la regularisation
+lambda = 200;			% Poids de la regularisation
 u_k = u_0;
 convergence = +Inf;
 iteration = 0;
@@ -72,7 +72,12 @@ while iteration < 20
 
 	% Affichage de l'image restauree a chaque iteration :
 	subplot(1,3,2)
-		imagesc(max(0,min(1,reshape(u_k,[nb_lignes nb_colonnes nb_canaux])/u_max)),[0 1])
+		u_b = max(0,min(1,reshape(u_k,[nb_lignes nb_colonnes nb_canaux])/u_max));
+		% Cap the values of the image
+		u_b = u_b + 0.05;
+		u_b(u_b<0.3) = 0.3;
+		u_b(u_b>1) = 1;
+		imagesc(u_b)
 		if nb_canaux==1
 			colormap gray
 		end
@@ -80,10 +85,18 @@ while iteration < 20
 		title(['Structure (iteration ' num2str(iteration) ')'],'FontSize',20)
         
     subplot(1,3,3)
-        imagesc(max(0,min(1,(reshape(u_0-u_k,[nb_lignes nb_colonnes nb_canaux])/u_max+1)/2)),[0 1])
-        if nb_canaux==1
+		u_c = max(0,min(1,(reshape(u_0-u_k,[nb_lignes nb_colonnes nb_canaux])/u_max+1)/2));
+		% Remove colors from the texture
+		u_c = mean(u_c,3);
+		% Threshold the texture
+		u_c(u_c<0.5) = 0;
+		u_c(u_c>=0.5) = 1;
+		%u_c = im2gray(u_c);
+
+        imshow(u_c)
+		if nb_canaux==1
 			colormap gray
-        end
+		end
 		axis image off
         title(['Soustraction de la solution, Texture (iteration ' num2str(iteration) ')'],'FontSize',20)    
         

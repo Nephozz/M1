@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/safker/Gits/Rendu-OPENGL/tp3/robot.cpp
+algorithm
+-
+cmath
+-
+cstdlib
+-
+iostream
+-
+GLUT/glut.h
+-
+OpenGL/gl.h
+-
+OpenGL/glu.h
+-
+windows.h
+-
+GL/freeglut.h
+-
+GL/gl.h
+-
+GL/glu.h
+-
+

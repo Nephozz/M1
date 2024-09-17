@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+body {
+  background: #dfdfdf;
+}
+header {
+  z-index: 1000;
+  background: #fff;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+}
+header .logo {
+  width: 100px;
+}
+header nav ul {
+  display: flex;
+}
+header nav ul li a {
+  display: relative;
+  color: #000;
+  padding: 5px 0;
+  margin: 0 10px;
+  text-transform: uppercase;
+  transition: 0.1s;
+}
+
+header nav ul li a:hover {
+  border-bottom: 3px solid #2558a5;
+}
+
+header nav ul li a.active {
+    border-bottom: 3px solid #2558a5;
+}
+
+.hamburger {
+  cursor: pointer;
+  display: none;
+}
+.hamburger div {
+  width: 30px;
+  height: 3px;
+  margin: 5px 0;
+  border-radius: 20px;
+  background: #000;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-bottom: 40px;
+}
+
+.add-salles{
+  margin-top: 20px;
+}
+
+.input-box .input-field{
+  width: 100%;
+  height: 40px;
+  font-size: 12px;
+  padding: 0 25px;
+  margin-bottom: 15px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0px 5px 10px 1px rgba(0,0,0, 0.05);
+  outline: none;
+  transition: .3s;
+}
+
+.salles {
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 20px;
+}
+
+.salle {
+  width: 150px;                 /* Set width of cards */
+  border: 1px solid #2558a5;    /* Set up Border */
+  border-radius: 4px;           /* Slightly Curve edges */
+  overflow: hidden;             /* Fixes the corners */  
+  display: flex;                /* Children use Flexbox */
+  flex-direction: column;       /* Rotate Axis */
+  margin: 10px 10px 0px 10px;                 /* Add margin around cards */
+}
+
+.salle-header {
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #2558a5;
+  background-color: #2558a5;
+  padding: 5px 10px;
+}
+
+.salle-main {
+  display: flex;              /* Children use Flexbox */
+  flex-direction: row;     /* Rotate Axis to Vertical */
+  justify-content: center;    /* Group Children in Center */
+  align-items: center;        /* Group Children in Center (+axis) */
+  padding: 15px 0;            /* Add padding to the top/bottom */
+  background-color: #ffffff;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+.material-icons {
+  font-size: 30px !important;
+  margin-bottom: 4px;
+}
+
+.remove-btn i {
+  color: #ff0000;
+}
+
+.add-btn i {
+  color: #00eb00;
+}
+
+.salle-main i {
+  color: #2558a5;
+}
+
+.remove-submit, .add-submit{
+  text-align: center;
+  font-size: 35px;
+  position: relative;
+}
+
+
+.nav-message{
+  margin-left: 15px;
+  margin-right: 15px;
+  text-align: center;
+  font-size: 1em;
+}
+
+
+/* footer {
+  background-color: #333;
+  color: white;
+  font-size: 0.8em;
+  padding: 15px;
+  position: relative; 
+  bottom: -70px;
+  width: 100%;
+} */
+
+@media only screen and (max-width: 900px) {
+  header {
+    padding: 0 30px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .hamburger {
+    display: block;
+  }
+  header nav {
+    position: absolute;
+    width: 100%;
+    left: -100%;
+    top: 70px;
+    width: 100%;
+    background: #fff;
+    padding-left: 40px;
+    padding-top: 20px;
+    transition: 0.3s;
+    box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.05);
+  }
+  header #nav_check:checked ~ nav {
+    left: 0;
+  }
+  header nav ul {
+    display: block;
+  }
+  header nav ul li a {
+    margin: 0 10px;
+  }
+  header nav ul li {
+    margin-bottom: 20px;
+  }
+  header nav ul li a {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .nav-message{
+    font-size: 0.7em;
+  }
+}

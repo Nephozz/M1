@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/admin-filiere.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>Projet AppliWeb</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="../images/n7.png" />
+      <input type="checkbox" id="nav_check" hidden />
+      <div class="nav-message">
+        <a>Samy</a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="" class="active">Accueil</a>
+          </li>
+
+          <li>
+            <a href="">Se déconnecter</a>
+          </li>
+        </ul>
+      </nav>
+      <label for="nav_check" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
+    </header>
+
+    <div class="main-container">
+        <div class="add-student">
+          <div class="input-box">
+            <input
+              type="text"
+              class="input-field"
+              name="prenom"
+              placeholder="Nom de filière"
+              required
+            />
+          </div>
+
+          <div class="add-submit">
+            <button class="add-btn" id="add_room-btn"><i class="material-icons">add_circle</i></button>
+          </div>
+        </div>
+
+        <div class="filieres">
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th></th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>IMM</td>
+                  <td>
+                    <button class="remove-btn" id="add_room-btn" name="idFiliere" ><i class="material-icons">do_not_disturb_on</i></button>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+        
+   
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/admin-students.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>Projet AppliWeb</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="../images/n7.png" />
+      <input type="checkbox" id="nav_check" hidden />
+      <div class="nav-message">
+        <a>Samy</a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="" class="active">Accueil</a>
+          </li>
+
+          <li>
+            <a href="">Se déconnecter</a>
+          </li>
+        </ul>
+      </nav>
+      <label for="nav_check" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
+    </header>
+
+    <div class="main-container">
+        <div class="add-student">
+          <div class="input-box">
+            <input class="role-field" type="date" name="date" value="2024-01-01" />
+          </div>
+          <div class="input-box">
+            <select class="role-field" id="role-select" name="creneau" required>
+              <option value="choice-message" selected disabled hidden>Créneau</option>
+              <option value="c1">8h-9h45</option>
+              <option value="c2">10h15-12h</option>
+              <option value="c3">14h-15h45</option>
+              <option value="c4">16h15-18h</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <select class="role-field" id="role-select" name="prof" required>
+              <option value="choice-message" selected disabled hidden>Professeur</option>
+              <option value="d1">Daniel hagimont</option>
+              <option value="d2">Daniel hagimont</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <select class="role-field" id="role-select" name="matiere" required>
+              <option value="choice-message" selected disabled hidden>Matière</option>
+              <option value="m1">Appli Web</option>
+              <option value="m2">IDM</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <select class="role-field" id="role-select" name="salle" required>
+              <option value="choice-message" selected disabled hidden>Salle</option>
+              <option value="s1">C205</option>
+              <option value="s2">A001</option>
+            </select>
+        </div>
+
+          <div class="add-submit">
+            <button class="add-btn" id="add_room-btn"><i class="material-icons">add_circle</i></button>
+          </div>
+        </div>
+
+        <div class="Filière">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Filière</th>
+                <th>Absences</th>
+                <th></th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Afker</td>
+                  <td>Samy</td>
+                  <td>IMM</td>
+                  <td>8758h</td>
+                  <td>
+                    <button class="remove-btn" id="add_room-btn" name="idEtu" ><i class="material-icons">do_not_disturb_on</i></button>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+        
+   
+    </div>
+
+  </body>
+</html>

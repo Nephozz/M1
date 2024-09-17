@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css">
+    <title>Projet AppliWeb</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="${pageContext.request.contextPath}/images/n7.png" />
+      <input type="checkbox" id="nav_check" hidden />
+      <div class="nav-message">
+        <a>Samy</a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="" class="active">Accueil</a>
+          <li>
+            <a href="">Se déconnecter</a>
+          </li>
+        </ul>
+      </nav>
+      <label for="nav_check" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
+    </header>
+
+    <div class="buttons-box">
+    		  <div class="button">
+    		    <button type="submit" class="submit-btn" id="submit" name="opc" value="salles">Salles</button>
+		      </div>
+		      <div class="button">
+		        <button type="submit" class="submit-btn" id="submit" name="opc" value="cours">Cours</button>
+		      </div>
+		      <div class="button">
+		        <button type="submit" class="submit-btn" id="submit" name="opc" value="etu">Etudiants</button>
+		      </div>
+		      <div class="button">
+		        <button type="submit" class="submit-btn" id="submit" name="opc" value="prof">Professeurs</button>
+		      </div>
+    </div>
+
+  </body>
+</html>

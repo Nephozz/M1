@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Page de connexion</title>
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+</head>
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <header>Connexion</header>
+        </div>
+        
+        <form action="../ServConnect" method="post">
+        
+	        <div class="input-box">
+	            <input type="text" name="name" class="input-field" placeholder="Nom d'utilisateur" required>
+	        </div>
+	        <div class="input-box">
+	            <input type="password" name="mdp" class="input-field" placeholder="Mot de passe" required>
+	        </div>
+	        <div class="input-box">
+	            <select class="role-field" name="role" id="role-select" required>
+	                <option value="choice-message" selected disabled hidden>Choisissez votre rôle</option>
+	                <option value="etudiant">Étudiant</option>
+	                <option value="prof">Professeur</option>
+	                <option value="admin">Administrateur</option>
+	              </select>
+	        </div>
+	        <div class="input-submit">
+	            <button class="submit-btn" id="submit"></button>
+	            <input type="hidden" name="op" value="login">
+	            <label for="submit">Se connecter</label>
+	        </div>
+        
+        </form>
+        
+        
+    </div>
+
+</body>
+</html>

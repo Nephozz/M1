@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/admin-lesson.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>Projet AppliWeb</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="../images/n7.png" />
+      <input type="checkbox" id="nav_check" hidden />
+      <div class="nav-message">
+        <a>Samy AFKER</a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="" class="active">Accueil</a>
+          </li>
+
+          <li>
+            <a href="">Se déconnecter</a>
+          </li>
+        </ul>
+      </nav>
+      <label for="nav_check" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
+    </header>
+
+    <div class="main-container">
+      <div class="add-lesson">
+        <div class="input-box">
+          <input
+            type="text"
+            class="input-field"
+            name="nomCours"
+            placeholder="Nom du cours"
+            required
+          />
+        </div>
+
+        <div class="input-box">
+          <select class="role-field" id="role-select" name="responsable" required>
+            <option value="choice-message" selected disabled hidden>
+              Responsable
+            </option>
+            <option value="d1">Daniel Hagimont</option>
+            <option value="d2">Daniel Hagimont</option>
+            <option value="d3">Daniel Hagimont</option>
+            <option value="d4">Daniel Hagimont</option>
+            <option value="d5">Daniel Hagimont</option>
+            <option value="d6">Daniel Hagimont</option>
+          </select>
+        </div>
+
+        <div class="check-boxes">
+          <div class="checkbox-choice">
+            <input
+              type="checkbox"
+              class="input-field"
+              name="filiere"
+              value="A"
+            />
+            <a>A</a>
+          </div>
+
+          <div class="checkbox-choice">
+            <input
+              type="checkbox"
+              class="input-field"
+              name="filiere"
+              value="B"
+            />
+            <a>B</a>
+          </div>
+
+          <div class="checkbox-choice">
+            <input
+              type="checkbox"
+              class="input-field"
+              name="filiere"
+              value="L"
+            />
+            <a>L</a>
+          </div>
+
+          <div class="checkbox-choice">
+            <input
+              type="checkbox"
+              class="input-field"
+              name="filiere"
+              value="M"
+            />
+            <a>M</a>
+          </div>
+
+          <div class="checkbox-choice">
+            <input
+              type="checkbox"
+              class="input-field"
+              name="filiere"
+              value="R"
+            />
+            <a>R</a>
+          </div>
+
+          <div class="checkbox-choice">
+            <input
+              type="checkbox"
+              class="input-field"
+              name="filiere"
+              value="T"
+            />
+            <a>T</a>
+          </div>
+        </div>
+
+        <div class="add-submit">
+          <button class="add-btn" id="add_room-btn">
+            <i class="material-icons">add_circle</i>
+          </button>
+        </div>
+      </div>
+
+      <div class="teachers">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Cours</th>
+              <th>Filières</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Samy</td>
+              <td>IMM</td>
+              <td>
+                <button class="remove-btn" id="add_room-btn" name="idCours">
+                  <i class="material-icons">do_not_disturb_on</i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
